@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+html{
+    font-size: 100%;
+}
+body{
+
+}
+h1{
+    background-color: rgb(241, 135, 36);
+    padding: 20px 0px 20px 5%;
+}
+h2{
+    background-color: rgb(255, 207, 77);
+    padding: 10px 0px 10px 5%;
+}
+
+.detail-contents{
+    display: flex;
+}
+
+.detail-contents .items{
+    display: flex;
+    padding: 20px;
+}
+
+.detail-contents .items .item{
+    padding: 20px;
+}
+
+.left{
+    width: 40%;
+}
+
+.right{
+    width: 60%;
+}
