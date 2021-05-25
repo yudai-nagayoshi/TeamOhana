@@ -1,0 +1,16 @@
+spring:
+  messages:
+    basename: 18n/application-messages
+    cache-duration: -1
+    encoding: UTF-8
+  datasource:
+    initialize: false
+    url: jdbc:mysql://localhost:33306/employeeListApp
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+doma:
+  dialect: mysql
+  data-source-name: jdbc:mysql://localhost:33306/employeeListApp?user=root&password=root
+  exception-sql-log-type: formatted
+  jdbc-logger: slf4j
