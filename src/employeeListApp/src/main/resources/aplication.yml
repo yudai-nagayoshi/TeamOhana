@@ -5,12 +5,12 @@ spring:
     encoding: UTF-8
   datasource:
     initialize: false
-    url: jdbc:mysql://localhost:33306/employeeListApp
+    url: jdbc:mysql://localhost:33306/employee_db
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 doma:
   dialect: mysql
-  data-source-name: jdbc:mysql://localhost:33306/employeeListApp?user=root&password=root
+  data-source-name: jdbc:mysql://localhost:33306/employee_db?user=root&password=root
   exception-sql-log-type: formatted
   jdbc-logger: slf4j
