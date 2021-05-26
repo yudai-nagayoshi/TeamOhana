@@ -49,12 +49,19 @@ ALTER TABLE `positions`
   ADD PRIMARY KEY (`position_id`);
 
 --
--- ダンプしたテーブルの AUTO_INCREMENT
+-- データ挿入
 --
+
+INSERT INTO `positions` VALUES (1,"代表取締役社長");
+INSERT INTO `positions` VALUES (2,"専務取締役");
+INSERT INTO `positions` VALUES (3,"部長");
+INSERT INTO `positions` VALUES (4,"課長");
+INSERT INTO `positions` VALUES (5,"一般社員");
 
 --
 -- テーブルの AUTO_INCREMENT `positions`
 --
+
 
 -- --------------------------------------------------------
 
@@ -75,6 +82,7 @@ CREATE TABLE `departments` (
 --
 -- テーブルのインデックス `departments`
 --
+
 ALTER TABLE `departments`
   ADD PRIMARY KEY (`department_id`);
 
@@ -84,6 +92,16 @@ ALTER TABLE `departments`
 
 --
 -- テーブルの AUTO_INCREMENT `departments`
+
+--
+-- データ挿入
+--
+
+INSERT INTO `departments` VALUES (1,"総務部");
+INSERT INTO `departments` VALUES (2,"人事部");
+INSERT INTO `departments` VALUES (3,"経理部");
+INSERT INTO `departments` VALUES (4,"営業部");
+INSERT INTO `departments` VALUES (5,"開発部");
 --
 --
 -- テーブルの構造 `employees`
