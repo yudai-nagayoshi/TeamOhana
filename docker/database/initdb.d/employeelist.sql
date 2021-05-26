@@ -35,7 +35,7 @@ CREATE TABLE `employees` (
   `name` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
   `furigana` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
   `email` varchar(40) NOT NULL COLLATE utf8mb4_unicode_ci,
-  `tell` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
+  `phone_number` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
   `joining_date` date NOT NULL,
   `position_id` int NOT NULL FOREIGN KEY positions(position_id),
   `department_id` int NOT NULL FOREIGN KEY departments(department_id)

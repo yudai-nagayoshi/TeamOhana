@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>社員名簿｜社員一覧</title>
+        <link rel="icon" type="image/png" href="image/favicon.png">
+
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link href="./style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <div>
+                <h1>社員名簿</h1>
+            </div>
+            <div class="employee-contents">
+                <h2>社員一覧</h2>
+                <select name="searchmethod">
+                    <option value="名前" selected>名前</option>
+                    <option value="社員番号">社員番号</option>
+                    <option value="入社年月日">入社年月日</option>
+                    <option value="役職">役職</option>
+                    <option value="所属部署">所属部署</option>
+                </select>
+                <input type="search" placeholder="検索">
+                <a href="./create.html"><input type="image" src="./image/plus.png" alt="create"></a>
+                <a><input type="image" src="./image/download.png" alt="download" onclick="MoveCheck();"></a>
+                
+                <script>
+                    function MoveCheck() {
+                        ret=confirm( "検索結果をCSVファイルでダウンロードしてよろしいですか？" );
+                        if (ret == true) {
+                            location.href = "file:///Users/minori-hagihara/Documents/TeamOhana/templates/detail.html"
+                        }
+                    }
+                </script>
+                
+            </div>
+        </header>
+
+        <table border="1">
+            <tr>
+                <th>社員番号</th>
+                <th>社員名</th>
+                <th>フリガナ</th>
+                <th>入社年月日</th>
+                <th>入社年数</th>
+                <th>役職</th>
+                <th>所属部署</th>
+                <th>携帯番号</th>
+                <th>メールアドレス</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>4567890</td>
+                <td>〇〇〇〇</td>
+                <td>アイウエオ</td>
+                <td>20xx年xx月xx日</td>
+                <td>〇〇年</td>
+                <td>〇〇</td>
+                <td>〇〇部</td>
+                <td>00000000000</td>
+                <td>xxxxxx@co.jp</td>
+                <td><a href="./detail.html"><input type="image" src="./image/information.png" alt="information"></a></td>
+            </tr>
+            <tr>
+
+            </tr>
+        </table>
+        <a href="./main.html"><input type="image" src="./image/top.png" alt="page_top"></a></div>
+    </body>
+</html>
+
+検索結果をCSVファイルでダウンロードしてよろしいですか？
