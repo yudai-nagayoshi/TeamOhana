@@ -8,7 +8,7 @@ $ git clone https://<ユーザー名>@github.com/yudai-nagayoshi/TeamOhana.git
 # docker起動
 初回
 ```
-$ docker-compose -up -d
+$ docker-compose up -d
 ```
 初回以降
 ```

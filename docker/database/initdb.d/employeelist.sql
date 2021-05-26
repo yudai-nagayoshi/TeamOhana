@@ -25,42 +25,6 @@ USE `employee_db`;
 
 -- --------------------------------------------------------
 
---
--- テーブルの構造 `employees`
---
-
-DROP TABLE IF EXISTS `employees`;
-CREATE TABLE `employees` (
-  `employee_id` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
-  `furigana` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
-  `email` varchar(40) NOT NULL COLLATE utf8mb4_unicode_ci,
-  `phone_number` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
-  `joining_date` date NOT NULL,
-  `position_id` int NOT NULL FOREIGN KEY positions(position_id),
-  `department_id` int NOT NULL FOREIGN KEY departments(department_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- ダンプしたテーブルのインデックス
---
-
---
--- テーブルのインデックス `employees`
---
-ALTER TABLE `employees`
-  ADD PRIMARY KEY (`employee_id`);
-
---
--- ダンプしたテーブルの AUTO_INCREMENT
---
-
---
--- テーブルの AUTO_INCREMENT `employees`
---
-ALTER TABLE `employees`
-  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
 
 -- --------------------------------------------------------
 
@@ -71,7 +35,7 @@ COMMIT;
 DROP TABLE IF EXISTS `positions`;
 CREATE TABLE `positions` (
   `position_id` int(11) NOT NULL,
-  `position` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
+  `position` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -85,12 +49,19 @@ ALTER TABLE `positions`
   ADD PRIMARY KEY (`position_id`);
 
 --
--- ダンプしたテーブルの AUTO_INCREMENT
+-- データ挿入
 --
+
+INSERT INTO `positions` VALUES (1,"代表取締役社長");
+INSERT INTO `positions` VALUES (2,"専務取締役");
+INSERT INTO `positions` VALUES (3,"部長");
+INSERT INTO `positions` VALUES (4,"課長");
+INSERT INTO `positions` VALUES (5,"一般社員");
 
 --
 -- テーブルの AUTO_INCREMENT `positions`
 --
+
 
 -- --------------------------------------------------------
 
@@ -101,7 +72,7 @@ ALTER TABLE `positions`
 DROP TABLE IF EXISTS `departments`;
 CREATE TABLE `departments` (
   `department_id` int(11) NOT NULL,
-  `department` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
+  `department` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -111,6 +82,7 @@ CREATE TABLE `departments` (
 --
 -- テーブルのインデックス `departments`
 --
+
 ALTER TABLE `departments`
   ADD PRIMARY KEY (`department_id`);
 
@@ -120,7 +92,58 @@ ALTER TABLE `departments`
 
 --
 -- テーブルの AUTO_INCREMENT `departments`
+
 --
+-- データ挿入
+--
+
+INSERT INTO `departments` VALUES (1,"総務部");
+INSERT INTO `departments` VALUES (2,"人事部");
+INSERT INTO `departments` VALUES (3,"経理部");
+INSERT INTO `departments` VALUES (4,"営業部");
+INSERT INTO `departments` VALUES (5,"開発部");
+--
+--
+-- テーブルの構造 `employees`
+--
+
+DROP TABLE IF EXISTS `employees`;
+CREATE TABLE `employees` (
+  `employee_id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
+  `furigana` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
+  `email` varchar(40) NOT NULL COLLATE utf8mb4_unicode_ci,
+  `phone_number` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
+  `joining_date` date NOT NULL,
+  `position_id` int NOT NULL ,
+  `department_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- ダンプしたテーブルのインデックス
+--
+
+--
+-- テーブルのインデックス `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`employee_id`);
+
+--
+-- 外部キーの設定
+--
+ALTER TABLE `employees` 
+  ADD FOREIGN KEY (`department_id`) REFERENCES `departments`(`department_id`);
+
+ALTER TABLE `employees`
+ ADD FOREIGN KEY (`position_id`) REFERENCES `positions`(`position_id`);
+--
+-- テーブルの AUTO_INCREMENT `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
