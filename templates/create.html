@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>社員名簿|新規登録</title>
+        <link rel="icon" type="image/png" href="image/favicon.png">
+
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link href="./style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <h1>社員名簿</h1>
+            <div class="sub-header">
+                <h2>新規登録</h2>
+            </div>
+        </header>
+        <div class="detail-contents">
+            <div class="left">
+                <img>
+            </div>
+            <div class="right">
+                <form method="post">
+                    <div class="items">
+                        <div class="item">
+                            <p>社員番号</p>
+                            <input type="text"></input>
+                        </div>
+                        <div class="item">
+                            <p>社員名</p>
+                            <input type="text"></input>
+                        </div>
+                        <div class="item">
+                            <p>フリガナ</p>
+                            <input type="text"></input>
+                        </div>
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            <p>入社年月日</p>
+                            <input type="date"></input>
+                        </div>
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            <p>役職</p>
+                            <select name="position">
+                                <option value="代表取締役社長">代表取締役社長</option>
+                                <option value="課長">部長</option>
+                                <option value="課長">課長</option>
+                                <option value="係長">係長</option>
+                                <option value="一般社員" selected>一般社員</option>
+                                </select>
+                        </div>
+                        <div class="item">
+                            <p>所属部署</p>
+                            <select name="department">
+                                <option value="総務部">総務部</option>
+                                <option value="経理部">経理部</option>
+                                <option value="人事部">人事部</option>
+                                <option value="営業部">営業部</option>
+                                <option value="開発部">開発部</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            <p>携帯番号</p>
+                            <input type="tel"></p>
+                        </div>
+                        <div class="item">
+                            <p>メールアドレス</p>
+                            <input type="email"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="btn">
+            <a>戻る</a>
+        </div>
+    </body>
+</html>
