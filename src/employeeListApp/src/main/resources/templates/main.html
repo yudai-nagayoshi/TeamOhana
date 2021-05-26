@@ -7,6 +7,7 @@
 
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
         <link href="./style.css" rel="stylesheet">
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     </head>
 
     <body>
@@ -14,19 +15,27 @@
             <div>
                 <h1>社員名簿</h1>
             </div>
-            <div class="employee-contents">
+            <div class="sub-header">
                 <h2>社員一覧</h2>
-                <select name="searchmethod">
-                    <option value="名前" selected>名前</option>
-                    <option value="社員番号">社員番号</option>
-                    <option value="入社年月日">入社年月日</option>
-                    <option value="役職">役職</option>
-                    <option value="所属部署">所属部署</option>
-                </select>
-                <input type="search" placeholder="検索">
-                <a href="./create.html"><input type="image" src="./image/plus.png" alt="create"></a>
-                <a><input type="image" src="./image/download.png" alt="download" onclick="MoveCheck();"></a>
-                
+
+                <div class="contents">
+                    <div class="search" style="margin-right: 25px;">
+                        <select name="searchmethod" class="selectbox">
+                            <option value="名前" selected>名前</option>
+                            <option value="社員番号">社員番号</option>
+                            <option value="入社年月日">入社年月日</option>
+                            <option value="役職">役職</option>
+                            <option value="所属部署">所属部署</option>
+                        </select>
+                        <input type="text" placeholder="検索">
+                        <input type="submit" value="&#xf002;" class="fas">
+                    </div>
+                    <div class="mainicons">
+                        <a href="./create.html"><img src="./image/plus.png" alt="create"　width="25" height="25" style="margin-right: 25px;"></a>
+                        <img src="./image/download.png" alt="download" width="25" height="25" onclick="MoveCheck();">
+                    </div>
+                </div>
+
                 <script>
                     function MoveCheck() {
                         ret=confirm( "検索結果をCSVファイルでダウンロードしてよろしいですか？" );
@@ -39,8 +48,8 @@
             </div>
         </header>
 
-        <table border="1">
-            <tr>
+        <table border="1" style="border-collapse: collapse" class="t-line">
+            <tr class="t-top" height="40">
                 <th>社員番号</th>
                 <th>社員名</th>
                 <th>フリガナ</th>
@@ -52,7 +61,7 @@
                 <th>メールアドレス</th>
                 <th></th>
             </tr>
-            <tr>
+            <tr height="40">
                 <td>4567890</td>
                 <td>〇〇〇〇</td>
                 <td>アイウエオ</td>
@@ -62,14 +71,36 @@
                 <td>〇〇部</td>
                 <td>00000000000</td>
                 <td>xxxxxx@co.jp</td>
-                <td><a href="./detail.html"><input type="image" src="./image/information.png" alt="information"></a></td>
+                <td class="information"><a href="./detail.html"><img src="./image/information.png" alt="information" width="25" height="25"></a></td>
             </tr>
-            <tr>
-
+            <tr height="40">
+                <td>4567890</td>
+                <td>〇〇〇〇</td>
+                <td>アイウエオ</td>
+                <td>20xx年xx月xx日</td>
+                <td>〇〇年</td>
+                <td>〇〇</td>
+                <td>〇〇部</td>
+                <td>00000000000</td>
+                <td>xxxxxx@co.jp</td>
+                <td class="information"><a href="./detail.html"><img src="./image/information.png" alt="information" width="25" height="25"></a></td>
+            </tr>
+            <tr height="40">
+                <td>4567890</td>
+                <td>〇〇〇〇</td>
+                <td>アイウエオ</td>
+                <td>20xx年xx月xx日</td>
+                <td>〇〇年</td>
+                <td>〇〇</td>
+                <td>〇〇部</td>
+                <td>00000000000</td>
+                <td>xxxxxx@co.jp</td>
+                <td><a href="./detail.html"><img src="./image/information.png" alt="information" width="25" height="25"></a></td>
             </tr>
         </table>
-        <a href="./main.html"><input type="image" src="./image/top.png" alt="page_top"></a></div>
+        <div class="top">
+            <a href="./main.html"><input type="image" src="./image/top.png" alt="page_top" width="50" height="50" ></a></div>
+        </div>
     </body>
 </html>
 
-検索結果をCSVファイルでダウンロードしてよろしいですか？
