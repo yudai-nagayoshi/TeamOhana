@@ -15,15 +15,32 @@
             <div class="sub-header">
                 <h2>詳細</h2>
                 <div class="icons">
-                    <img src="image/download.png" alt="">
-                    <img src="image/download.png" alt="">
-                    <img src="image/download.png" alt="">
+                    <img src="image/download.png" alt="download" width="25" height="25" style="margin-right: 25px;" onclick="MoveCheck1();">
+                    <a href="./update.html"><img src="image/edit.png" alt="edit" width="25" height="25" style="margin-right: 25px;"></a>
+                    <img src="image/dustbox.png" alt="delete" width="25" height="25" onclick="MoveCheck2();">
                 </div>
+
+                <script>
+                    function MoveCheck1() {
+                        ret=confirm( "社員データーをCSVファイルでダウンロードしてよろしいですか？" );
+                        if (ret == true) {
+                            location.href = "file:///Users/minori-hagihara/Documents/TeamOhana/templates/detail.html"
+                        }
+                    }
+
+                    function MoveCheck2() {
+                        ret=confirm( "社員データーを削除してよろしいですか？" );
+                        if (ret == true) {
+                            location.href = "file:///Users/minori-hagihara/Documents/TeamOhana/templates/detail.html"
+                        }
+                    }
+                </script>
+
             </div>
         </header>
         <div class="detail-contents">
             <div class="left">
-                <img>
+                <img src="image/No image.png" alt="no picture">
             </div>
             <div class="right">
                 <div class="items">
@@ -72,8 +89,8 @@
                 </div>
             </div>
         </div>
-        <div class="btn">
-            <a>戻る</a>
+        <div class="detail-btn">
+            <a href="./main.html">戻る</a>
         </div>
     </body>
 </html>

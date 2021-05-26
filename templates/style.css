@@ -2,13 +2,15 @@
 
 html{
     font-size: 100%;
+    color: rgb(55, 55, 55);
 }
 body{
 
 }
 h1{
-    background-color: rgb(241, 135, 36);
-    padding: 20px 0px 20px 5%;
+    background-color: rgb(245, 172, 62);
+    padding: 25px 0px 25px 5%;
+    font-size: 40px;
 }
 
 .sub-header{
@@ -17,22 +19,87 @@ h1{
     display: flex;
 }
 
-.sub-header .icons{
+h2{
+    font-size: 20px;
+    height: 35px;
+}
+
+/* 一覧画面 */
+.sub-header .contents{
+    margin: 0 6% 0 auto;
     display: flex;
 }
 
-h2{
-    
+.search{
+    display: flex;
+    border: 1px solid rgb(240, 191, 84);
+    border-radius: 20px;
+    height: 2.0em;
+    width: 350px;
+    background-color: white;
 }
 
+.sub-header select{
+    color: rgb(55, 55, 55);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 3px 5px;
+    height: 1.9em;
+    width: 120px;
+    padding-left: 10px;
+    margin-right: 10px;
+    background: transparent url(https://haniwaman.com/wp/wp-content/uploads/2018/12/form-css-arrow.png) no-repeat center right 8px/10px 10px ;
+    background-color: rgb(245, 172, 62);
+}
+
+.mainicons{
+    display: flex;
+}
+
+.t-line tr:nth-child(odd) td{
+    background-color: #EFEFEF;
+}
+.t-line tr:nth-child(even) td{
+    background-color: white;
+}
+
+.t-line tr:first-child, .t-line td:first-child{
+    background-color: rgb(255, 207, 77);
+}
+
+table{
+    margin: 50px auto;
+    width: 80%;
+    text-align: center;
+    border-collapse: collapse;
+    border: solid 2.5px rgb(218, 216, 216);
+}
+
+td img{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 2px;
+}
+
+.top{
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+}
+
+
+/* 詳細画面*/
+.icons{
+    margin: 0 6% 0 auto;
+}
 
 .detail-contents{
     display: flex;
+    margin-top: 50px;
 }
 
 .detail-contents .items{
     display: flex;
-    padding: 20px;
 }
 
 .detail-contents .items .item{
@@ -41,18 +108,61 @@ h2{
 
 .left{
     width: 40%;
+    margin: 50px 0 auto 200px;
+}
+
+.left img{
+    width: 300px;
 }
 
 .right{
     width: 60%;
 }
 
-.btn{
-    width: fit-content;
-    margin : 0 auto;
+.holder{
+
+    border: solid 2px rgb(206, 204, 204);
+    border-radius: 5px;
+    padding: 4px 15px;
+}
+
+.detail-btn {
+    width: 70px;
+    text-align: center;
+    margin : 40px auto;
     padding: 10px;
     background-color: rgb(247, 228, 123);
+    border-radius: 10px;
 }
-.btn:hover{
+
+.detail-btn:hover{
     background-color: rgb(240, 191, 84);
+}
+
+
+/*編集画面 新規登録画面*/
+.select-holder{
+    border: solid 2px rgb(206, 204, 204);
+    border-radius: 5px;
+    padding: 5px 13px;
+    width: 215px;
+    background: transparent url(https://haniwaman.com/wp/wp-content/uploads/2018/12/form-css-arrow.png) no-repeat center right 8px/10px 10px ;
+}
+
+.back,.save {
+    width: 70px;
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(247, 228, 123);
+    border-radius: 10px;
+}
+
+.back:hover,.save:hover{
+    background-color: rgb(240, 191, 84);
+}
+
+.edit-btn {
+    display: flex;
+    justify-content: center;
+    margin: 40px auto;
 }
