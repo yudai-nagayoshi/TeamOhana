@@ -18,7 +18,7 @@ public class Employee {
     String furigana;
     String email;
     String phone_number;
-    Date joining_date;
+    String joining_date;
     Integer position_id;
     Integer department_id;
 }
