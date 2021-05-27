@@ -31,16 +31,16 @@ public interface EmployeeDao {
     @Select
     Employee selectById(Integer id);
 
-    @Sql("SELECT /*%expand*/* FROM employee " +
-            "INNER JOIN positions ON employee.position_id = positions.position_id　" +
-            "INNER JOIN departments ON employee.department_id = departments.department_id" +
-            "where /* item */ LIKE %/* word */%")
-    @Select
-    List<Employee> search(String item, String word);
-
-    @Sql("SELECT /*%expand*/* FROM employee ORDER BY /* item */ /* way */")
-    @Select
-    List<Employee> sort(Employee employee, String item, String way);
+//    @Sql("SELECT /*%expand*/* FROM employee " +
+//            "INNER JOIN positions ON employee.position_id = positions.position_id　" +
+//            "INNER JOIN departments ON employee.department_id = departments.department_id" +
+//            "where /* item */ LIKE /*'%' + word + '%' */0")
+//    @Select
+//    List<Employee> search(String item, String word);
+//
+//    @Sql("SELECT /*%expand*/* FROM employee ORDER BY /* item */ /* way */0")
+//    @Select
+//    List<Employee> sort(Employee employee, String item, String way);
 
 
     @Insert
