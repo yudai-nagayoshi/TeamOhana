@@ -1,5 +1,6 @@
 package jp.co.froide.employeeListApp.dao;
 
+import jp.co.froide.employeeListApp.entity.All;
 import org.seasar.doma.*;
 import org.seasar.doma.boot.ConfigAutowireable;
 import org.seasar.doma.jdbc.Config;
@@ -14,20 +15,20 @@ public interface EmployeeDao {
     default int count() {
         Config config = Config.get(this);
         SelectBuilder builder = SelectBuilder.newInstance(config);
-        builder.sql("select count(*) from employee");
+        builder.sql("select count(*) from employees");
         return builder.getScalarSingleResult(int.class);
     }
 
-    @Sql("SELECT /*%expand*/* FROM employee " +
-            "INNER JOIN positions ON employee.position_id = positions.position_id　" +
-            "INNER JOIN departments ON employee.department_id = departments.department_id")
+    @Sql("SELECT employee_id, name, furigana, joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
+            "email, phone_number FROM employees " +
+            "INNER JOIN positions ON employees.position_id = positions.position_id " +
+            "INNER JOIN departments ON employees.department_id = departments.department_id")
     @Select
-    List<Employee> selectAll();
+    List<All> selectAll();
 
-    @Sql("select /*%expand*/* from employee" +
-            "INNER JOIN positions ON employee.position_id = positions.position_id　" +
-            "INNER JOIN departments ON employee.department_id = departments.department_id" +
-            "where id = /* id */0")
+
+
+    @Sql("select /*%expand*/* from employees where employee_id = /* id */0")
     @Select
     Employee selectById(Integer id);
 
@@ -42,13 +43,19 @@ public interface EmployeeDao {
 //    @Select
 //    List<Employee> sort(Employee employee, String item, String way);
 
-
-    @Insert
-    int insert(Employee employee);
-
+//
+//    @Insert
+//    int insert(Employee employee);
+//
     @Update
     int update(Employee employee);
+//
+//    @Delete
+//    int delete(Employee employee);
 
-    @Delete
-    int delete(Employee employee);
+    @Sql("SELECT TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE) FROM employees")
+    @Select
+    List<Integer> period();
 }
+
+
