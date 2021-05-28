@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
     <head>
         <meta charset="utf-8">
         <title>社員名簿｜社員一覧</title>
         <link rel="icon" type="image/png" href="image/favicon.png">
 
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-        <link href="./style.css" rel="stylesheet">
+        <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     </head>
 
@@ -31,8 +31,11 @@
                         <input type="submit" value="&#xf002;" class="fas">
                     </div>
                     <div class="mainicons">
-                        <a href="./create.html"><img src="./image/plus.png" alt="create"　width="25" height="25" style="margin-right: 25px;"></a>
-                        <img src="./image/download.png" alt="download" width="25" height="25" onclick="MoveCheck();">
+                        <form th:action="@{/create}" method="get">
+                            <input type ="image" name="submit" width="25" height="25" th:src="@{/images/plus.png}" alt="新規登録">
+                        </form>
+                        <img th:src="@{/images/download.png}" alt="download" width="25" height="25" onclick="MoveCheck();">
+
                     </div>
                 </div>
 
@@ -61,45 +64,22 @@
                 <th>メールアドレス</th>
                 <th></th>
             </tr>
-            <tr height="40">
-                <td>4567890</td>
-                <td>〇〇〇〇</td>
-                <td>アイウエオ</td>
-                <td>20xx年xx月xx日</td>
-                <td>〇〇年</td>
-                <td>〇〇</td>
-                <td>〇〇部</td>
-                <td>00000000000</td>
-                <td>xxxxxx@co.jp</td>
-                <td class="information"><a href="./detail.html"><img src="./image/information.png" alt="information" width="25" height="25"></a></td>
-            </tr>
-            <tr height="40">
-                <td>4567890</td>
-                <td>〇〇〇〇</td>
-                <td>アイウエオ</td>
-                <td>20xx年xx月xx日</td>
-                <td>〇〇年</td>
-                <td>〇〇</td>
-                <td>〇〇部</td>
-                <td>00000000000</td>
-                <td>xxxxxx@co.jp</td>
-                <td class="information"><a href="./detail.html"><img src="./image/information.png" alt="information" width="25" height="25"></a></td>
-            </tr>
-            <tr height="40">
-                <td>4567890</td>
-                <td>〇〇〇〇</td>
-                <td>アイウエオ</td>
-                <td>20xx年xx月xx日</td>
-                <td>〇〇年</td>
-                <td>〇〇</td>
-                <td>〇〇部</td>
-                <td>00000000000</td>
-                <td>xxxxxx@co.jp</td>
-                <td><a href="./detail.html"><img src="./image/information.png" alt="information" width="25" height="25"></a></td>
+            <tr height="40" th:each="emp : ${employeeList}">
+                <td th:text="${emp.employee_id}"></td>
+                <td th:text="${emp.name}"></td>
+                <td th:text="${emp.furigana}"></td>
+                <td th:text="${emp.joining_date}"></td>
+                <td th:text="${emp.period}"></td>
+                <td th:text="${emp.position}"></td>
+                <td th:text="${emp.department}"></td>
+                <td th:text="${emp.phone_number}"></td>
+                <td th:text="${emp.email}"></td>
+                <td class="information"><a href="./detail.html"><img th:src="@{/images/information.png}" alt="information" width="25" height="25"></a></td>
             </tr>
         </table>
         <div class="top">
-            <a href="./main.html"><input type="image" src="./image/top.png" alt="page_top" width="50" height="50" ></a></div>
+
+            <a href="#"><input type="image" th:src="@{/images/top.png}" alt="page_top" width="50" height="50" ></a></div>
         </div>
     </body>
 </html>
