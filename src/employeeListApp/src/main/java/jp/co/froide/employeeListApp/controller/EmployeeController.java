@@ -16,12 +16,12 @@ public class EmployeeController {
     @Autowired
     EmployeeDao employeeDao;
 
-    @GetMapping("employee")
+    @GetMapping("employees")
     public List<Employee> employeeList() {
         return employeeDao.selectAll();
     }
 
-    @PostMapping("employee")
+    @PostMapping("employees")
     public void insertEmployee(@RequestParam ("name") String name, @RequestParam ("furigana") String furigana,
                                @RequestParam ("joining_date") String joining_date,
                                @RequestParam ("position_id") Integer position_id, @RequestParam ("department_id") Integer department_id,
