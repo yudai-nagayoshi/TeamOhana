@@ -20,5 +20,4 @@ public class Department{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer department_id;
     private String department;
-
 }

@@ -33,19 +33,6 @@ public interface EmployeeDao {
     @Select
     All selectDetail(Integer id);
 
-
-    @Sql("SELECT /*%expand*/* FROM employees " +
-            "INNER JOIN positions ON employees.position_id = positions.position_id　" +
-            "INNER JOIN departments ON employees.department_id = departments.department_id" +
-            "where /* item */ LIKE /*'%' + word + '%' */0")
-    @Select
-    List<Employee> search(String item, String word);
-
-    @Sql("SELECT /*%expand*/* FROM employees ORDER BY /* item */ /* way */0")
-    @Select
-    List<Employee> sort(Employee employee, String item, String way);
-
-
     @Insert
     int insert(Employee employee);
 
@@ -55,9 +42,6 @@ public interface EmployeeDao {
     @Delete
     int delete(Employee employee);
 
-    @Sql("SELECT TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE) FROM employees")
-    @Select
-    List<Integer> period();
 }
 
 
