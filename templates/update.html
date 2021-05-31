@@ -11,68 +11,60 @@
 
     <body>
         <header>
-            <h1>社員名簿</h1>
+            <h1><a href="./main.html">社員名簿</a></h1>
             <div class="sub-header">
                 <h2>編集</h2>
             </div>
         </header>
         <div class="detail-contents">
-            <div class="left">
-                <img src="image/No image.png" alt="no picture">
+            <h2>社員情報</h2>
+            <div class="items">
+                <div class="edit-name">
+                    <p>社員名：</p>
+                    <p class="holder"><input type="text"></p>
+                </div>
+                <div class="edit-phone-number">
+                    <p>携帯番号(ハイフン無し)：</p>
+                    <p class="holder"><input type="text"></p>
+                </div>
             </div>
-            <div class="right">
-                <div class="items">
-                    <div class="item">
-                        <p>社員名</p>
-                        <p class="holder"><input type="text"></p>
-                    </div>
-                    <div class="item">
-                        <p>フリガナ</p>
-                        <p class="holder"><input type="text"></p>
-                    </div>
+            <div class="items">
+                <div class="edit-furigana">
+                    <p>フリガナ：</p>
+                    <p class="holder"><input type="text"></p>
                 </div>
-                <div class="items">
-                    <div class="item">
-                        <p>入社年月日</p>
-                        <p class="holder"><input type="date"></p>
-                    </div>
+                <div class="edit-mail">
+                    <p>メールアドレス：</p>
+                    <p class="mail-holder"><input type="text">@co.jp</p>
                 </div>
-                <div class="items">
-                    <div class="item">
-                        <p>役職</p>
-                        <select name="position" class="select-holder">
-                            <option disabled selected value>選択してください</option>
-                            <option value="代表取締役社長">代表取締役社長</option>
-                            <option value="専務取締役">専務取締役</option>
-                            <option value="部長">部長</option>
-                            <option value="課長">課長</option>
-                            <option value="一般社員">一般社員</option>
-
-                        </select>
-                    </div>
-                    <div class="item">
-                        <p>所属部署</p>
-                        <select name="department" class="select-holder">
-                            <option disabled selected value>選択してください</option>
-                            <option value="所属なし">所属なし</option>
-                            <option value="総務部">総務部</option>
-                            <option value="人事部">人事部</option>
-                            <option value="経理部">経理部</option>
-                            <option value="営業部">営業部</option>
-                            <option value="開発部">開発部</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="items">
-                    <div class="item">
-                        <p>携帯番号(ハイフン無し)</p>
-                        <p class="holder"><input type="text"></p>
-                    </div>
-                    <div class="item">
-                        <p>メールアドレス</p>
-                        <p class="holder"><input type="text">@co.jp</p>
-                    </div>
-                </div>
+            </div>
+            <h2>業務情報</h2>
+            <div class="edit-business">
+                <p>役職：</p>
+                <select name="position" class="select-holder">
+                    <option disabled selected value>選択してください</option>
+                    <option value="代表取締役社長">代表取締役社長</option>
+                    <option value="専務取締役">専務取締役</option>
+                    <option value="部長">部長</option>
+                    <option value="課長">課長</option>
+                    <option value="一般社員">一般社員</option>
+                </select>
+            </div>
+            <div class="edit-business">
+                <p>所属部署：</p>
+                <select name="department" class="select-holder">
+                    <option disabled selected value>選択してください</option>
+                    <option value="所属なし">所属なし</option>
+                    <option value="総務部">総務部</option>
+                    <option value="人事部">人事部</option>
+                    <option value="経理部">経理部</option>
+                    <option value="営業部">営業部</option>
+                    <option value="開発部">開発部</option>
+                </select>
+            </div>
+            <div class="edit-business">
+                <p>入社年月日：</p>
+                <p class="holder"><input type="date"></p>
             </div>
         </div>
         <div class="edit-btn">

@@ -1,88 +1,106 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns:th="http://www.w3.org/1999/html" lang="ja">
     <head>
         <meta charset="utf-8">
         <title>社員名簿|新規登録</title>
-        <link rel="icon" type="image/png" href="image/favicon.png">
-
+        <link rel="icon" type="image/png" th:href="@{image/favicon.png}">
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-        <link href="./style.css" rel="stylesheet">
+        <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
     </head>
 
     <body>
-        <header>
-            <h1>社員名簿</h1>
-            <div class="sub-header">
-                <h2>新規登録</h2>
-            </div>
-        </header>
-        <div class="detail-contents">
-            <div class="left">
-                <img src="image/No image.png" alt="no picture">
-            </div>
-            <div class="right">
-                <div class="items">
-                    <div class="item">
-                        <p>社員名</p>
-                        <p class="holder"><input type="text"></p>
-                    </div>
-                    <div class="item">
-                        <p>フリガナ</p>
-                        <p class="holder"><input type="text"></p>
-                    </div>
+        <form th:object="${EmployeeForm}" th:action="${create}" id="form1" enctype="multipart/form-data" method="post">
+            <header>
+                <h1>社員名簿</h1>
+                <div class="sub-header">
+                    <h2>新規登録</h2>
                 </div>
-                <div class="items">
-                    <div class="item">
-                        <p>入社年月日</p>
-                        <p class="holder"><input type="date"></p>
-                    </div>
+            </header>
+            <div class="detail-contents">
+                <div class="left">
+                    <img th:src="@{/image/No image.png}" alt="no picture">
                 </div>
-                <div class="items">
-                    <div class="item">
-                        <p>役職</p>
-                        <select name="position" class="select-holder">
-                            <option disabled selected value>選択してください</option>
-                            <option value="代表取締役社長">代表取締役社長</option>
-                            <option value="専務取締役">専務取締役</option>
-                            <option value="部長">部長</option>
-                            <option value="課長">課長</option>
-                            <option value="一般社員">一般社員</option>
 
-                        </select>
+            <div class="right">
+                <form th:object="${EmployeeForm}" th:action="${create}" id="form1" enctype="multipart/form-data" method="post">
+                    <div class="items">
+                        <div class="item">
+                            <p>社員名</p>
+                            <p class="holder"><input type="text" th:type="text" th:field="*{name}"></p>
+<!--                            <span th:each="error : ${#fields.detailedErrors('name')}" style="color: red">-->
+<!--                                <p th:text="${error.message}"></p>-->
+<!--                            </span>-->
+                            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></span>
+                        </div>
+                        <div class="item">
+                            <p>フリガナ</p>
+                            <p class="holder"><input type="text" th:type="text" th:field="*{furigana}"></p>
+                            <span th:if="${#fields.hasErrors('furigana')}" th:errors="*{furigana}" style="color: red"></span>
+                        </div>
                     </div>
-                    <div class="item">
-                        <p>所属部署</p>
-                        <select name="department" class="select-holder">
-                            <option disabled selected value>選択してください</option>
-                            <option value="所属なし">所属なし</option>
-                            <option value="総務部">総務部</option>
-                            <option value="人事部">人事部</option>
-                            <option value="経理部">経理部</option>
-                            <option value="営業部">営業部</option>
-                            <option value="開発部">開発部</option>
-                        </select>
+                    <div class="items">
+                        <div class="item">
+                            <p>入社年月日</p>
+                            <p class="holder"><input type="date" th:type="date" th:field="*{joining_date}"></p>
+                            <span th:if="${#fields.hasErrors('joining_date')}" th:errors="*{joining_date}" style="color: red"></span>
+                        </div>
                     </div>
+                    <div class="items">
+                        <div class="item">
+                            <p>役職</p>
+                            <select name="position" class="select-holder">
+                                <option disabled selected value>選択してください</option>
+
+                                <option th:each="ps : ${position}" th:value="${ps.position_id}" th:inline="text">[[${ps.position}]]</option>
+                                <span th:if="${#fields.hasErrors('position_id')}" th:errors="*{position_id}" style="color: red"></span>
+
+                                <option th:each="position : ${position_idList}" th:value="${position_id.id}" th:inline="text">[[${position_id.name}]]</option>
+
+                            </select>
+                        </div>
+                        <div class="item">
+                            <p>所属部署</p>
+                            <select name="department" class="select-holder" >
+                                <option disabled selected value>選択してください</option>
+                                <option th:each="dp : ${department}" th:value="${dp.department_id}" th:inline="text">[[${dp.department}]]</option>
+                                <span th:if="${#fields.hasErrors('department_id')}" th:errors="*{department_id}" style="color: red"></span>
+
+                                <option value="所属なし">所属なし</option>
+                                <option value="総務部">総務部</option>
+                                <option value="人事部">人事部</option>
+                                <option value="経理部">経理部</option>
+                                <option value="営業部">営業部</option>
+                                <option value="開発部">開発部</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="items">
+                        <div class="item">
+                            <p>携帯番号(ハイフン無し)</p>
+                            <p class="holder"><input type="text" th:type="text" th:field="*{phone_number}"></p>
+
+                            <span th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}" style="color: red"></span>
+
+                        </div>
+                        <div class="item">
+                            <p>メールアドレス</p>
+                            <p class="holder"><input type="text" th:type="text" th:field="*{email}">@co.jp</p>
+                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="edit-btn">
+                <div class="back" style="margin-right: 25px;">
+                    <a href="./main.html">戻る</a>
                 </div>
-                <div class="items">
-                    <div class="item">
-                        <p>携帯番号(ハイフン無し)</p>
-                        <p class="holder"><input type="text" maxlength="11"></p>
-                    </div>
-                    <div class="item">
-                        <p>メールアドレス</p>
-                        <p class="holder"><input type="text">@co.jp</p>
-                    </div>
+                <div class="save">
+                    <input type="submit" value="保存" />
                 </div>
             </div>
-        </div>
-        <div class="edit-btn">
-            <div class="back" style="margin-right: 25px;">
-                <a href="./main.html">戻る</a>
-            </div>
-            <div class="save">
-                <a href="./main.html">保存</a>
-            </div>
-        </div>
+        </form>
     </body>
 </html>
 

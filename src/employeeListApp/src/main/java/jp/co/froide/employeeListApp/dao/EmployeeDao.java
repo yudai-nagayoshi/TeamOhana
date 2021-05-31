@@ -23,6 +23,7 @@ public interface EmployeeDao {
             "email, phone_number FROM employees " +
             "INNER JOIN positions ON employees.position_id = positions.position_id " +
             "INNER JOIN departments ON employees.department_id = departments.department_id")
+
     @Select
     List<All> selectAll();
 
