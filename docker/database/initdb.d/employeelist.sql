@@ -116,7 +116,9 @@ CREATE TABLE `employees` (
   `phone_number` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
   `joining_date` date NOT NULL,
   `position_id` int NOT NULL ,
-  `department_id` int NOT NULL
+  `department_id` int NOT NULL,
+  `adding_date`　date NOT NULL,
+  `last_update_date` date
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -142,6 +144,10 @@ ALTER TABLE `employees`
 --
 ALTER TABLE `employees`
   MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `employees`
+    MODIFY `adding_date` date NOT NULL DEFAULT CURRENT_TIMESTAMP;
+    MODIFY `last_update_date` DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 COMMIT;
 
 
