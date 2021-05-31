@@ -78,6 +78,10 @@ table{
     border: solid 2.5px rgb(218, 216, 216);
 }
 
+th{
+    padding-left: 10px;
+}
+
 .information{
     text-align: center;
 }
