@@ -27,34 +27,22 @@ public interface EmployeeDao {
     @Select
     List<All> selectAll();
 
-    @Sql("select /*%expand*/* from employees where employee_id = /* id */0")
+    @Sql("SELECT employee_id, name, furigana, joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
+            "email, phone_number,adding_date,last_update_date FROM employees " +
+            "INNER JOIN positions ON employees.position_id = positions.position_id " +
+            "INNER JOIN departments ON employees.department_id = departments.department_id WHERE employee_id = /* id */0")
     @Select
-    Employee selectById(Integer id);
+    All selectDetail(Integer id);
 
-//    @Sql("SELECT /*%expand*/* FROM employee " +
-//            "INNER JOIN positions ON employee.position_id = positions.position_id　" +
-//            "INNER JOIN departments ON employee.department_id = departments.department_id" +
-//            "where /* item */ LIKE /*'%' + word + '%' */0")
-//    @Select
-//    List<Employee> search(String item, String word);
-//
-//    @Sql("SELECT /*%expand*/* FROM employee ORDER BY /* item */ /* way */0")
-//    @Select
-//    List<Employee> sort(Employee employee, String item, String way);
+    @Insert
+    int insert(Employee employee);
 
-//
-//    @Insert
-//    int insert(Employee employee);
-//
     @Update
     int update(Employee employee);
-//
-//    @Delete
-//    int delete(Employee employee);
 
-    @Sql("SELECT TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE) FROM employees")
-    @Select
-    List<Integer> period();
+    @Delete
+    int delete(Employee employee);
+
 }
 
 

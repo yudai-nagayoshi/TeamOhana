@@ -19,32 +19,5 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class MainController {
-    @Autowired
-    EmployeeDao employeeDao;
 
-    @Autowired
-    DepartmentDao departmentDao;
-
-    @Autowired
-    PositionDao positionDao;
-
-    public List<All> employeeList() {
-//        List<All> all = new ArrayList<>();
-//        List<Employee> employeeList = employeeDao.selectAll();
-//        for (Employee employee : employeeList){
-//            String  department = departmentDao.selectById(employee.getDepartment_id()).getDepartment();
-//        }
-        return employeeDao.selectAll();
-    }
-    public List<Integer> joiningPeriod(){
-        return employeeDao.period();
-    }
-
-    @GetMapping("main")
-    public String hello(Model model) {
-        List<All> list = employeeList();
-        model.addAttribute("employeeList", list);
-        model.addAttribute("joiningPeriod", joiningPeriod());
-        return "main";
-    }
 }
