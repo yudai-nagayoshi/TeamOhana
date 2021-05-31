@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8">
         <title>社員名簿|詳細</title>
-        <link rel="icon" type="image/png" href="image/favicon.png">
-
+        <link rel="icon" type="image/png" th:href="@{image/favicon.png}">
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-        <link href="./style.css" rel="stylesheet">
+        <link href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
     </head>
 
     <body>
@@ -15,9 +14,11 @@
             <div class="sub-header">
                 <h2>詳細</h2>
                 <div class="icons">
-                    <img src="image/download.png" alt="download" width="25" height="25" style="margin-right: 25px;" onclick="MoveCheck1();">
-                    <a href="./update.html"><img src="image/edit.png" alt="edit" width="25" height="25" style="margin-right: 25px;"></a>
-                    <img src="image/dustbox.png" alt="delete" width="25" height="25" onclick="MoveCheck2();">
+                    <img th:src="@{/images/download.png}" alt="download" width="25" height="25" style="margin-right: 25px;" onclick="MoveCheck1();">
+                    <a th:href="@{./update.html}"><img th:src="@{/images/edit.png}" alt="edit" width="25" height="25" style="margin-right: 25px;"></a>
+<!--                    <form th:action="${action}" enctype="multipart/form-data" onsubmit="MoveCheck2()" method="delete">-->
+                        <input type="image" th:src="@{/images/dustbox.png}" alt="delete" width="25" height="25">
+                    </form>
                 </div>
 
                 <script>
@@ -30,8 +31,10 @@
 
                     function MoveCheck2() {
                         ret=confirm( "社員データーを削除してよろしいですか？" );
-                        if (ret == true) {
-                            location.href = "file:///Users/minori-hagihara/Documents/TeamOhana/templates/detail.html"
+                        if (ret) {
+                            return true;
+                        }else{
+                            return false;
                         }
                     }
                 </script>
@@ -40,29 +43,29 @@
         </header>
         <div class="detail-contents">
             <div class="left">
-                <img src="image/No image.png" alt="no picture">
+                <img th:src="@{/images/No image.png}" alt="no picture">
             </div>
             <div class="right">
                 <div class="items">
                     <div class="item">
                         <p>社員番号</p>
-                        <p class="holder">12345</p>
+                        <p class="holder" th:text="${list.employee_id}"></p>
                     </div>
                     <div class="item">
                         <p>社員名</p>
-                        <p class="holder">山田　太郎</p>
+                        <p class="holder" th:text="${list.name}"></p>
                     </div>
                     <div class="item">
                         <p>フリガナ</p>
-                        <p class="holder">ヤマダ　タロウ</p>
+                        <p class="holder" th:text="${list.furigana}"></p>
                     </div>
                 </div>
                 <div class="items">
                     <div class="item">
                         <p>入社年月日</p>
-                        <p class="holder">xxxx年xx月xx日</p>
+                        <p class="holder" th:text="${list.joining_date}"></p>
                     </div>
-                    <div class="item" class="item">
+                    <div class="item">
                         <p>入社年数</p>
                         <p class="holder">xx年</p>
                     </div>
@@ -70,21 +73,21 @@
                 <div class="items">
                     <div class="item">
                         <p>役職</p>
-                        <p class="holder">○○</p>
+                        <p class="holder" th:text="${list.position_id}"></p>
                     </div>
                     <div class="item">
                         <p>所属部署</p>
-                        <p class="holder">○○部</p>
+                        <p class="holder" th:text="${list.department_id}"></p>
                     </div>
                 </div>
                 <div class="items">
                     <div class="item">
                         <p>携帯番号</p>
-                        <p class="holder">xxxxxxxxxx</p>
+                        <p class="holder" th:text="${list.phone_number}"></p>
                     </div>
                     <div class="item">
                         <p>メールアドレス</p>
-                        <p class="holder">xxxx@xxxx.co.jp</p>
+                        <p class="holder" th:text="${list.email}"></p>
                     </div>
                 </div>
             </div>
