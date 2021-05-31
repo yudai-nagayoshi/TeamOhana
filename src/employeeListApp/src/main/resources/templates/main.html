@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>社員名簿｜社員一覧</title>
+        <link rel="icon" type="image/png" href="image/favicon.png">
+
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <header >
+            <div>
+                <h1>社員名簿</h1>
+            </div>
+            <div class="sub-header">
+                <h2>社員一覧</h2>
+
+                <div class="contents" >
+                    <form th:action="@{main}">
+                        <div class="search" style="margin-right: 25px;">
+                            <select name="searchmethod" class="selectbox">
+                                <option value="name" selected>名前</option>
+                                <option value="employee_id">社員番号</option>
+                                <option value="position">役職</option>
+                                <option value="department">所属部署</option>
+                            </select>
+                            <input type="text" placeholder="検索" name="word">
+                            <input type="submit" value="&#xf002;" class="fas">
+                        </div>
+                    </form>
+                    <div class="mainicons">
+                        <form th:action="@{/create}" method="post">
+                            <input type ="image" name="submit" width="25" height="25" th:src="@{/images/plus.png}" alt="新規登録">
+                        </form>
+                        <img th:src="@{/images/download.png}" alt="download" width="25" height="25" onclick="MoveCheck();">
+
+                    </div>
+                </div>
+
+                <script>
+                    function MoveCheck() {
+                        ret=confirm( "検索結果をCSVファイルでダウンロードしてよろしいですか？" );
+                        if (ret == true) {
+                            location.href = "file:///Users/minori-hagihara/Documents/TeamOhana/templates/detail.html"
+                        }
+                    }
+                </script>
+                
+            </div>
+        </header>
+
+        <table border="1" style="border-collapse: collapse" class="t-line">
+            <tr class="t-top" height="40">
+                <form th:action="@{main}" method="post">
+                    <th><input type="submit" value="社員番号"></th>
+                    <th><input type="submit" value="社員名"></th>
+                    <th><input type="submit" value="役職"></th>
+                    <th><input type="submit" value="所属部署"></th>
+                </form>
+                <th></th>
+            </tr>
+            <tr height="40" th:each="emp : ${employeeList}">
+                <td th:text="${emp.employee_id}"></td>
+                <td th:text="${emp.name}"></td>
+                <td th:text="${emp.position}"></td>
+                <td th:text="${emp.department}"></td>
+                <td>
+                    <form th:action="@{detail/{id}(id=${emp.employee_id})}" method="get">
+                        <input type="submit" value="詳細">
+                    </form>
+                </td>
+
+            </tr>
+        </table>
+        <div class="top">
+
+            <a href="#"><input type="image" th:src="@{/images/top.png}" alt="page_top" width="50" height="50" ></a></div>
+        </div>
+    </body>
+</html>
+
 

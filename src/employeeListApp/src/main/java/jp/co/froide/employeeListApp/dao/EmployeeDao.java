@@ -22,8 +22,8 @@ public interface EmployeeDao {
     @Sql("SELECT employee_id, name, furigana, joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
             "email, phone_number FROM employees " +
             "INNER JOIN positions ON employees.position_id = positions.position_id " +
-            "INNER JOIN departments ON employees.department_id = departments.department_id")
-
+            "INNER JOIN departments ON employees.department_id = departments.department_id " +
+            "ORDER BY employee_id ASC")
     @Select
     List<All> selectAll();
 
@@ -33,6 +33,27 @@ public interface EmployeeDao {
             "INNER JOIN departments ON employees.department_id = departments.department_id WHERE employee_id = /* id */0")
     @Select
     All selectDetail(Integer id);
+
+
+    @Sql("SELECT employee_id, name, furigana, joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
+            "email, phone_number FROM employees " +
+            "INNER JOIN positions ON employees.position_id = positions.position_id " +
+            "INNER JOIN departments ON employees.department_id = departments.department_id " +
+            "WHERE /*# item */ LIKE /*'%' + word + '%' */'a'"  +
+            "ORDER BY employee_id ASC")
+    @Select
+    List<All> search(String item, String word);
+
+
+
+    @Sql("SELECT employee_id, name, furigana, joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
+            "email, phone_number FROM employees " +
+            "INNER JOIN positions ON employees.position_id = positions.position_id " +
+            "INNER JOIN departments ON employees.department_id = departments.department_id " +
+            "ORDER BY /*# item */ /*# way */")
+    @Select
+    List<Employee> sort(String item, String way);
+
 
     @Insert
     int insert(Employee employee);
