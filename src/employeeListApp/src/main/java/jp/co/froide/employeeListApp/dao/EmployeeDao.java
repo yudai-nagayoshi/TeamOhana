@@ -18,16 +18,11 @@ public interface EmployeeDao {
         return builder.getScalarSingleResult(int.class);
     }
 
-    @Sql("SELECT /*%expand*/* FROM employee " +
-            "INNER JOIN positions ON employee.position_id = positions.position_id　" +
-            "INNER JOIN departments ON employee.department_id = departments.department_id")
+    @Sql("SELECT /*%expand*/* FROM employees")
     @Select
     List<Employee> selectAll();
 
-    @Sql("select /*%expand*/* from employee" +
-            "INNER JOIN positions ON employee.position_id = positions.position_id　" +
-            "INNER JOIN departments ON employee.department_id = departments.department_id" +
-            "where id = /* id */0")
+    @Sql("select /*%expand*/* from employees where employee_id = /* id */0")
     @Select
     Employee selectById(Integer id);
 
