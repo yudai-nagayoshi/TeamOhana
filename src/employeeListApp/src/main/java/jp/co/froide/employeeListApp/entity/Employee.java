@@ -4,21 +4,32 @@ import lombok.Getter;
 import lombok.Setter;
 import org.seasar.doma.*;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import java.io.Serializable;
 import java.util.Date;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "employees")
-public class Employee {
+public class Employee{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer employee_id;
-    String name;
-    String furigana;
-    String email;
-    String phone_number;
-    String joining_date;
-    Integer position_id;
-    Integer department_id;
+    private Integer employee_id;
+
+    private String name;
+
+    private String furigana;
+
+    private String email;
+
+    private String phone_number;
+
+    private String joining_date;
+
+    private Integer position_id;
+
+    private Integer department_id;
+
 }

@@ -11,7 +11,6 @@ import java.util.List;
 @ConfigAutowireable
 @Dao
 public interface DepartmentDao {
-
     @Sql("select /*%expand*/* from departments")
     @Select
     List<Department> selectAll();

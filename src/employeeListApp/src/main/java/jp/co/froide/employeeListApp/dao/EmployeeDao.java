@@ -35,10 +35,6 @@ public interface EmployeeDao {
     All selectDetail(Integer id);
 
 
-    @Sql("select /*%expand*/* from employees where employee_id = /* id */0")
-    @Select
-    Employee selectById(Integer id);
-
     @Sql("SELECT employee_id, name, furigana, joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
             "email, phone_number FROM employees " +
             "INNER JOIN positions ON employees.position_id = positions.position_id " +
@@ -68,9 +64,6 @@ public interface EmployeeDao {
     @Delete
     int delete(Employee employee);
 
-    @Sql("SELECT TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE) FROM employees")
-    @Select
-    List<Integer> period();
 }
 
 
