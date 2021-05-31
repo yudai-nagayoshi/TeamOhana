@@ -28,6 +28,7 @@ public class EmployeeForm implements Serializable {
 
     @Digits(fraction = 0, integer = 11,message = "半角数字のみで入力してください" + "入力必須項目です")
     private Integer phone_number;
+    private String email;
 
     @NotBlank(message = "年月日を指定してください" + "入力必須項目です")
     private String joining_date;

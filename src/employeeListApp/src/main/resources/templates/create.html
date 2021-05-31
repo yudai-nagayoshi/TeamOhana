@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>社員名簿|新規登録</title>
-        <link rel="icon" type="image/png" th:href="@{/image/favicon.png}">
+        <link rel="icon" type="image/png" th:href="@{image/favicon.png}">
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
         <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
     </head>
@@ -20,7 +20,9 @@
                 <div class="left">
                     <img th:src="@{/image/No image.png}" alt="no picture">
                 </div>
-                <div class="right">
+
+            <div class="right">
+                <form th:object="${EmployeeForm}" th:action="${create}" id="form1" enctype="multipart/form-data" method="post">
                     <div class="items">
                         <div class="item">
                             <p>社員名</p>
@@ -48,8 +50,12 @@
                             <p>役職</p>
                             <select name="position" class="select-holder">
                                 <option disabled selected value>選択してください</option>
+
                                 <option th:each="ps : ${position}" th:value="${ps.position_id}" th:inline="text">[[${ps.position}]]</option>
                                 <span th:if="${#fields.hasErrors('position_id')}" th:errors="*{position_id}" style="color: red"></span>
+
+                                <option th:each="position : ${position_idList}" th:value="${position_id.id}" th:inline="text">[[${position_id.name}]]</option>
+
                             </select>
                         </div>
                         <div class="item">
@@ -58,6 +64,14 @@
                                 <option disabled selected value>選択してください</option>
                                 <option th:each="dp : ${department}" th:value="${dp.department_id}" th:inline="text">[[${dp.department}]]</option>
                                 <span th:if="${#fields.hasErrors('department_id')}" th:errors="*{department_id}" style="color: red"></span>
+
+                                <option value="所属なし">所属なし</option>
+                                <option value="総務部">総務部</option>
+                                <option value="人事部">人事部</option>
+                                <option value="経理部">経理部</option>
+                                <option value="営業部">営業部</option>
+                                <option value="開発部">開発部</option>
+
                             </select>
                         </div>
                     </div>
@@ -65,15 +79,18 @@
                         <div class="item">
                             <p>携帯番号(ハイフン無し)</p>
                             <p class="holder"><input type="text" th:type="text" th:field="*{phone_number}"></p>
+
                             <span th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}" style="color: red"></span>
+
                         </div>
                         <div class="item">
                             <p>メールアドレス</p>
                             <p class="holder"><input type="text" th:type="text" th:field="*{email}">@co.jp</p>
                             <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span>
+
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="edit-btn">
                 <div class="back" style="margin-right: 25px;">

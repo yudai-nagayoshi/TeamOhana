@@ -78,9 +78,10 @@ table{
     border: solid 2.5px rgb(218, 216, 216);
 }
 
-th{
-    padding-left: 10px;
+th,td{
+    padding-left: 15px;
 }
+
 
 .information{
     text-align: center;
@@ -96,6 +97,7 @@ th{
 /* 詳細画面*/
 .icons{
     margin: 5px 8% 0 auto;
+    margin: 0 6% 0 auto;
     display: flex;
 }
 
