@@ -22,7 +22,8 @@ public interface EmployeeDao {
     @Sql("SELECT employee_id, name, furigana, joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
             "email, phone_number FROM employees " +
             "INNER JOIN positions ON employees.position_id = positions.position_id " +
-            "INNER JOIN departments ON employees.department_id = departments.department_id")
+            "INNER JOIN departments ON employees.department_id = departments.department_id " +
+            "ORDER BY employee_id ASC")
     @Select
     List<All> selectAll();
 
@@ -32,16 +33,24 @@ public interface EmployeeDao {
     @Select
     Employee selectById(Integer id);
 
-//    @Sql("SELECT /*%expand*/* FROM employee " +
-//            "INNER JOIN positions ON employee.position_id = positions.position_id　" +
-//            "INNER JOIN departments ON employee.department_id = departments.department_id" +
-//            "where /* item */ LIKE /*'%' + word + '%' */0")
-//    @Select
-//    List<Employee> search(String item, String word);
-//
-//    @Sql("SELECT /*%expand*/* FROM employee ORDER BY /* item */ /* way */0")
-//    @Select
-//    List<Employee> sort(Employee employee, String item, String way);
+    @Sql("SELECT employee_id, name, furigana, joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
+            "email, phone_number FROM employees " +
+            "INNER JOIN positions ON employees.position_id = positions.position_id " +
+            "INNER JOIN departments ON employees.department_id = departments.department_id " +
+            "WHERE /*# item */ LIKE /*'%' + word + '%' */'a'"  +
+            "ORDER BY employee_id ASC")
+    @Select
+    List<All> search(String item, String word);
+
+
+
+    @Sql("SELECT employee_id, name, furigana, joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
+            "email, phone_number FROM employees " +
+            "INNER JOIN positions ON employees.position_id = positions.position_id " +
+            "INNER JOIN departments ON employees.department_id = departments.department_id " +
+            "ORDER BY /*# item */ /*# way */")
+    @Select
+    List<Employee> sort(String item, String way);
 
 //
 //    @Insert
