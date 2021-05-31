@@ -6,8 +6,20 @@
         <link rel="icon" type="image/png" href="image/favicon.png">
 
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.0/js/jquery.tablesorter.min.js"></script>
         <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+        <script>
+            $(document).ready(function() {
+                $('#emptable').tablesorter({
+                    headers: {
+                        4: { sorter: false }
+                    }
+                } );
+            });
+        </script>
     </head>
 
     <body>
@@ -52,21 +64,22 @@
             </div>
         </header>
 
-        <table border="1" style="border-collapse: collapse" class="t-line">
+        <table border="1" style="border-collapse: collapse" class="t-line tablesorter" id="emptable">
+            <thead>
             <tr class="t-top" height="40">
-                <form th:action="@{main}" method="post">
-                    <th><input type="submit" value="社員番号"></th>
-                    <th><input type="submit" value="社員名"></th>
-                    <th><input type="submit" value="役職"></th>
-                    <th><input type="submit" value="所属部署"></th>
-                </form>
+                    <th>社員番号</th>
+                    <th>社員名</th>
+                    <th>役職</th>
+                    <th>所属部署</th>
                 <th></th>
             </tr>
+            </thead>
+            <tbody>
             <tr height="40" th:each="emp : ${employeeList}">
                 <td th:text="${emp.employee_id}"></td>
                 <td th:text="${emp.name}"></td>
-                <td th:text="${emp.position}"></td>
-                <td th:text="${emp.department}"></td>
+                <td><p th:text="${emp.position_id}" style="display: none;"></p><p th:text="${emp.position}"></p></td>
+                <td><p th:text="${emp.department_id}" style="display: none;"></p><p th:text="${emp.department}"></p></td>
                 <td>
                     <form th:action="@{detail/{id}(id=${emp.employee_id})}" method="get">
                         <input type="submit" value="詳細">
@@ -74,6 +87,7 @@
                 </td>
 
             </tr>
+            </tbody>
         </table>
         <div class="top">
 

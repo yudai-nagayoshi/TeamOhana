@@ -30,13 +30,6 @@ public class MainController {
         return employeeDao.selectAll();
     }
 
-//    @GetMapping("main")
-//    public String main(Model model) {
-//        List<All> list = employeeList();
-//        model.addAttribute("employeeList", list);
-//        return "main";
-//    }
-
     @GetMapping("main")
     public String search(@RequestParam(name = "searchmethod", required = false) String searchmethod, @RequestParam(name = "word", required = false) String word, Model model) {
         if(searchmethod == null && word == null || word == "") {
@@ -50,4 +43,5 @@ public class MainController {
         return "main";
 
     }
+    
 }
