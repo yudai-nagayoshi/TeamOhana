@@ -20,7 +20,7 @@ h1{
 }
 
 h2{
-    font-size: 20px;
+    font-size: 25px;
     height: 35px;
 }
 
@@ -41,6 +41,7 @@ h2{
 
 .sub-header select{
     color: rgb(55, 55, 55);
+    font-weight: bold;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     padding: 3px 5px;
@@ -50,10 +51,12 @@ h2{
     margin-right: 10px;
     background: transparent url(https://haniwaman.com/wp/wp-content/uploads/2018/12/form-css-arrow.png) no-repeat center right 8px/10px 10px ;
     background-color: rgb(245, 172, 62);
+    cursor: pointer;
 }
 
 .mainicons{
     display: flex;
+    cursor: pointer;
 }
 
 .t-line tr:nth-child(odd) td{
@@ -69,61 +72,83 @@ h2{
 
 table{
     margin: 50px auto;
-    width: 80%;
-    text-align: center;
+    width: 75%;
+    text-align: left;
     border-collapse: collapse;
     border: solid 2.5px rgb(218, 216, 216);
 }
 
-td img{
-    display: inline-block;
-    vertical-align: middle;
-    padding: 2px;
+.information{
+    text-align: center;
 }
 
 .top{
     position: fixed;
-    right: 30px;
+    right: 35px;
     bottom: 30px;
 }
 
 
 /* 詳細画面*/
 .icons{
-    margin: 0 6% 0 auto;
+    margin: 5px 8% 0 auto;
+    display: flex;
+}
+
+.icons img{
+    cursor: pointer;
 }
 
 .detail-contents{
+    margin: 50px auto;
+    border: solid 3px rgb(245, 172, 62);
+    width: 70%;
+    padding: 20px 30px;
+}
+
+.items{
     display: flex;
-    margin-top: 50px;
 }
 
-.detail-contents .items{
+.date{
+    display: flex;
+    font-size: 15px;
+    margin-left: 55%;
+}
+
+.employee-number{
+    font-size: 20px;
+    margin: 10px 20px;
     display: flex;
 }
 
-.detail-contents .items .item{
-    padding: 20px;
+.name{
+    font-size: 30px;
+    margin: 5px 50px 0px;
 }
 
-.left{
-    width: 40%;
-    margin: 50px 0 auto 200px;
+.phone-number{
+    display: flex;
+    margin-top: 15px;
+    margin-left: 15%;
+    font-size: 18px;
 }
 
-.left img{
-    width: 300px;
+.furigana{
+    margin: 0 50px 40px;
+    font-size: 15px;
 }
 
-.right{
-    width: 60%;
+.mail{
+    display: flex;
+    font-size: 18px;
+    margin-left: 15%;
 }
 
-.holder{
-
-    border: solid 2px rgb(206, 204, 204);
-    border-radius: 5px;
-    padding: 4px 15px;
+.business{
+    margin: 15px 50px;
+    display: flex;
+    font-size: 18px;
 }
 
 .detail-btn {
@@ -141,12 +166,53 @@ td img{
 
 
 /*編集画面 新規登録画面*/
+.holder{
+    border: solid 2px rgb(206, 204, 204);
+    border-radius: 5px;
+    padding: 4px 15px;
+    width: 215px;
+    height: 35px;
+}
+
+.mail-holder{
+    border: solid 2px rgb(206, 204, 204);
+    border-radius: 5px;
+    padding: 4px 5px 4px 15px;
+    width: 265px;
+    height: 35px;
+}
+
 .select-holder{
     border: solid 2px rgb(206, 204, 204);
     border-radius: 5px;
-    padding: 5px 13px;
+    padding: 4px 15px;
     width: 215px;
     background: transparent url(https://haniwaman.com/wp/wp-content/uploads/2018/12/form-css-arrow.png) no-repeat center right 8px/10px 10px ;
+}
+
+.edit-name{
+    margin: 15px 50px;
+    display: flex;
+}
+
+.edit-phone-number{
+    display: flex;
+    margin: 15px 50px;
+}
+
+.edit-furigana{
+    margin: 5px 50px 40px;
+    display: flex;
+}
+
+.edit-mail{
+    display: flex;
+    margin: 5px 50px 20px 40px;
+}
+
+.edit-business{
+    margin: 15px 50px;
+    display: flex;
 }
 
 .back,.save {
