@@ -33,6 +33,13 @@
                         <p class="holder"><input type="text" th:type="text" th:field="*{phone_number}"></p>
                         <span th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}" style="color: red"></span>
                     </div>
+
+        <div class="detail-contents">
+            <h2>社員情報</h2>
+            <div class="items">
+                <div class="edit-name">
+                    <p>社員名：</p>
+                    <p class="holder"><input type="text"></p>
                 </div>
                 <div class="items">
                     <div class="edit-furigana">

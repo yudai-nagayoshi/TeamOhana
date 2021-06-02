@@ -76,4 +76,3 @@ public class UpdateController {
         return "redirect:/detail";
     }
 }
-

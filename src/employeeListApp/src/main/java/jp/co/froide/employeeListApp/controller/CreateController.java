@@ -48,7 +48,6 @@ public class CreateController {
         return "create";
     }
 
-    @PostMapping("/create")
     public String create(@Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br, RedirectAttributes attributes, Model model){
         List<Department> dp  = d_Dao.selectAll();
         List<Position> ps = p_Dao.selectAll();
