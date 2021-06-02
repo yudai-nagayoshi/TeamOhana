@@ -13,6 +13,11 @@ h1{
     font-size: 40px;
 }
 
+a {
+  color: rgb(55, 55, 55);
+  text-decoration: none;
+}
+
 .sub-header{
     background-color: rgb(255, 207, 77);
     padding: 10px 0px 10px 5%;
@@ -175,50 +180,58 @@ th,td{
 .holder{
     border: solid 2px rgb(206, 204, 204);
     border-radius: 5px;
-    padding: 4px 15px;
-    width: 215px;
-    height: 35px;
-}
-
-.mail-holder{
-    border: solid 2px rgb(206, 204, 204);
-    border-radius: 5px;
-    padding: 4px 5px 4px 15px;
-    width: 265px;
+    padding: 6px 10px;
+    width: 180px;
     height: 35px;
 }
 
 .select-holder{
     border: solid 2px rgb(206, 204, 204);
     border-radius: 5px;
-    padding: 4px 15px;
-    width: 215px;
+    padding: 6px 10px;
+    width: 180px;
     background: transparent url(https://haniwaman.com/wp/wp-content/uploads/2018/12/form-css-arrow.png) no-repeat center right 8px/10px 10px ;
 }
-
-.edit-name{
-    margin: 15px 50px;
+.form{
     display: flex;
 }
 
-.edit-phone-number{
-    display: flex;
-    margin: 15px 50px;
+.address{
+    margin: 6px 2px;
+}
+
+.left{
+    width: 50%;
+    margin: 20px;
 }
 
 .edit-furigana{
-    margin: 5px 50px 40px;
-    display: flex;
+    margin-top: 20px;
+}
+
+.error{
+    color: red;
+    font-size: 13px;
+}
+
+.right{
+    width: 50%;
+    margin: 20px;
 }
 
 .edit-mail{
-    display: flex;
-    margin: 5px 50px 20px 40px;
+    margin-top: 20px;
 }
 
 .edit-business{
     margin: 15px 50px;
     display: flex;
+}
+
+.business-error{
+    margin: 8px 10px;
+    color: red;
+    font-size: 13px;
 }
 
 .back,.save {
