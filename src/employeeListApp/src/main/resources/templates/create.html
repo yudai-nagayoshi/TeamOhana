@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/html" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>社員名簿|新規登録</title>
+        <link rel="icon" type="image/png" th:href="@{image/favicon.png}">
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
+    </head>
+
+    <body>
+    <form th:object="${EmployeeForm}" th:action="${create}" id="form1" enctype="multipart/form-data" method="post">
+        <header>
+            <h1><a href="./main.html">社員名簿</a></h1>
+            <div class="sub-header">
+                <h2>新規登録</h2>
+            </div>
+        </header>
+        <div class="detail-contents">
+            <h2>社員情報</h2>
+            <div class="items">
+                <div class="edit-one">
+                    <div class="form">
+                        <p>社員名：</p>
+                        <p class="holder"><input type="text" th:type="text" th:field="*{name}"></p>
+                    </div>
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></span>
+                </div>
+                <div class="edit-one">
+                    <div class="form">
+                        <p>携帯番号(ハイフン無し)：</p>
+                        <p class="holder"><input type="text" th:type="text" th:field="*{phone_number}"></p>
+                    </div>
+                    <span th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}" style="color: red"></span>
+                </div>
+            </div>
+            <div class="items">
+                <div class="edit-furigana">
+                    <div class="form">
+                        <p>フリガナ：</p>
+                        <p class="holder"><input type="text" th:type="text" th:field="*{furigana}"></p>
+                    </div>
+                    <span th:if="${#fields.hasErrors('furigana')}" th:errors="*{furigana}" style="color: red"></span>
+                </div>
+                <div class="edit-mail">
+                    <div class="form">
+                        <p>メールアドレス：</p>
+                        <p class="holder"><input type="text" th:type="text" th:field="*{email}">@co.jp</p>
+                    </div>
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></span>
+                </div>
+            </div>
+            <h2>業務情報</h2>
+            <div class="edit-business">
+                <p>役職：</p>
+                <select name="position" class="select-holder" th:field="*{position_id}">
+                    <option th:each="ps : ${position}" th:value="${ps.position_id}"
+                            th:inline="text" th:selected="${ps.position_id == select}">[[${ps.position}]]</option>
+                    <span th:if="${#fields.hasErrors('position_id')}" th:errors="*{position_id}" style="color: red"></span>
+                </select>
+            </div>
+            <div class="edit-business">
+                <p>所属部署：</p>
+                <select name="department" class="select-holder" th:field="*{department_id}">
+
+                    <option th:each="dp : ${department}" th:value="${dp.department_id}" th:inline="text">[[${dp.department}]]</option>
+                    <span th:if="${#fields.hasErrors('department_id')}" th:errors="*{department_id}" style="color: red"></span>
+                </select>
+            </div>
+            <div class="edit-business">
+                <p>入社年月日：</p>
+                <p class="holder"><input type="date" th:type="date" th:field="*{joining_date}"></p>
+                <span th:if="${#fields.hasErrors('joining_date')}" th:errors="*{joining_date}" style="color: red"></span>
+            </div>
+        </div>
+        <div class="edit-btn">
+            <div class="back" style="margin-right: 25px;">
+                <a href="./main.html">戻る</a>
+            </div>
+            <div class="save">
+                <input type="submit" value="保存"/>
+            </div>
+        </div>
+    </form>
+    </body>
+</html>
+
 

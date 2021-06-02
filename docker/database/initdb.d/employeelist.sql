@@ -102,6 +102,7 @@ INSERT INTO `departments` VALUES (2,"人事部");
 INSERT INTO `departments` VALUES (3,"経理部");
 INSERT INTO `departments` VALUES (4,"営業部");
 INSERT INTO `departments` VALUES (5,"開発部");
+INSERT INTO `departments` VALUES (6,"所属なし");
 --
 --
 -- テーブルの構造 `employees`
@@ -117,8 +118,8 @@ CREATE TABLE `employees` (
   `joining_date` date NOT NULL,
   `position_id` int NOT NULL ,
   `department_id` int NOT NULL,
-  `adding_date`　date NOT NULL,
-  `last_update_date` date
+  `adding_date` DATETIME NOT NULL,
+  `last_update_date` DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -146,10 +147,11 @@ ALTER TABLE `employees`
   MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `employees`
-    MODIFY `adding_date` date NOT NULL DEFAULT CURRENT_TIMESTAMP;
-    MODIFY `last_update_date` DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
-COMMIT;
+    MODIFY `adding_date` NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
+ALTER TABLE `employees`
+  MODIFY `last_update_date` NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -32,4 +32,8 @@ public class Employee{
 
     private Integer department_id;
 
+    private String adding_date;
+
+    private String last_update_date;
+
 }

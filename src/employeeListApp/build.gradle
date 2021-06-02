@@ -32,6 +32,9 @@ dependencies {
 
 	// H2 Database
 	runtimeOnly 'com.h2database:h2'
+
+	//CSV
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv'
 }
 
 test {

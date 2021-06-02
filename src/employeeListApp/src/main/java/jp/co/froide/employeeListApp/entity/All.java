@@ -21,4 +21,6 @@ public class All {
     String department;
     String position;
     String period;
+    String adding_date;
+    String last_update_date;
 }

@@ -1,6 +1,7 @@
 package jp.co.froide.employeeListApp.dao;
 
 import jp.co.froide.employeeListApp.entity.All;
+import jp.co.froide.employeeListApp.entity.Department;
 import org.seasar.doma.*;
 import org.seasar.doma.boot.ConfigAutowireable;
 import org.seasar.doma.jdbc.Config;
@@ -28,7 +29,7 @@ public interface EmployeeDao {
     List<All> selectAll();
 
     @Sql("SELECT employee_id, name, furigana, joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
-            "email, phone_number,adding_date,last_update_date FROM employees " +
+            "email, phone_number,DATE_FORMAT(adding_date,'%Y-%m-%d') as adding_date,DATE_FORMAT(last_update_date,'%Y-%m-%d') as last_update_date FROM employees " +
             "INNER JOIN positions ON employees.position_id = positions.position_id " +
             "INNER JOIN departments ON employees.department_id = departments.department_id WHERE employee_id = /* id */0")
     @Select
@@ -54,6 +55,14 @@ public interface EmployeeDao {
     @Select
     List<Employee> sort(String item, String way);
 
+    @Sql("SELECT department FROM departments")
+    @Select
+    List<All> selectDepartment();
+
+    @Sql("SELECT position FROM positions")
+    @Select
+    List<All> selectPosition();
+
 
     @Insert
     int insert(Employee employee);
@@ -63,6 +72,8 @@ public interface EmployeeDao {
 
     @Delete
     int delete(Employee employee);
+
+
 
 }
 
