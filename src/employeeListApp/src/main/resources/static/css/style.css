@@ -56,13 +56,12 @@ h2{
 
 .mainicons{
     display: flex;
-    cursor: pointer;
 }
 
-.t-line tr:nth-child(odd) td{
+.t-line tr:nth-child(even) td{
     background-color: #EFEFEF;
 }
-.t-line tr:nth-child(even) td{
+.t-line tr:nth-child(odd) td{
     background-color: white;
 }
 
@@ -78,8 +77,13 @@ table{
     border: solid 2.5px rgb(218, 216, 216);
 }
 
-th,td{
-    padding-left: 15px;
+th, td{
+    padding: 0px 15px 0px 15px;
+}
+
+.fixed {
+    position: sticky;
+    top: 0;
 }
 
 .tablesorter th{
