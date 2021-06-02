@@ -58,7 +58,7 @@
                         </div>
                     </form>
                     <div class="mainicons">
-                        <form th:action="@{/create}" method="post" style="padding: 3px 8px 0px 8px">
+                        <form th:action="@{/create}" method="get" style="padding: 3px 8px 0px 8px">
                             <input type ="image" name="submit" width="25" height="25" th:src="@{/image/plus.png}" alt="新規登録">
                         </form>
                         <div th:if="${word}==null" th:with="searchmethod=employees,word=all">

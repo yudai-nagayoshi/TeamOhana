@@ -6,9 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
-import jp.co.froide.employeeListApp.dao.DepartmentDao;
 import jp.co.froide.employeeListApp.dao.EmployeeDao;
-import jp.co.froide.employeeListApp.dao.PositionDao;
 import jp.co.froide.employeeListApp.entity.All;
 import lombok.AllArgsConstructor;
 import lombok.Value;
@@ -28,12 +26,6 @@ public class MainController {
     @Autowired
     EmployeeDao employeeDao;
 
-    @Autowired
-    DepartmentDao departmentDao;
-
-    @Autowired
-    PositionDao positionDao;
-
     List<All> list = new ArrayList<>();
 
     public List<All> employeeList() {
@@ -43,8 +35,10 @@ public class MainController {
     @GetMapping("main")
     public String search(@RequestParam(name = "searchmethod", required = false) String searchmethod, @RequestParam(name = "word", required = false) String word, Model model) {
         String error = "";
+        if (employeeDao.selectAll().size() == 0){
+            error = "社員が登録されていません";
+        }
         if(searchmethod == null && word == null || word.equals("")) {
-            //searchmethod = "employees";
             word = null;
             this.list = employeeList();
             model.addAttribute("employeeList", list);
@@ -57,7 +51,6 @@ public class MainController {
         this.list = employeeDao.search(searchmethod, word);
 
         if(searchmethod.equals("name")){ //名前検索時、かなカナ検索に対応
-            //this.list.addAll(employeeDao.search("furigana", word));
             List<All> listex = employeeDao.search("furigana", word);
             for (All i : listex){
                 boolean match = false;
@@ -122,7 +115,6 @@ public class MainController {
         private String phone_number;
         @JsonProperty("email")
         private String email;
-
 
     }
 }
