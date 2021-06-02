@@ -44,9 +44,9 @@
             <div class="sub-header">
                 <h2>社員一覧</h2>
 
-                <div class="contents" >
+                <div class="contents">
                     <form th:action="@{main}">
-                        <div class="search" style="margin-right: 25px;">
+                        <div class="search" style="margin: 0px 8px">
                             <select name="searchmethod" class="selectbox" id="searchmethod">
                                 <option value="name">名前</option>
                                 <option value="employee_id">社員番号</option>
@@ -58,20 +58,19 @@
                         </div>
                     </form>
                     <div class="mainicons">
-                        <form th:action="@{/create}" method="post">
+                        <form th:action="@{/create}" method="post" style="padding: 3px 8px 0px 8px">
                             <input type ="image" name="submit" width="25" height="25" th:src="@{/image/plus.png}" alt="新規登録">
                         </form>
                         <div th:if="${word}==null" th:with="searchmethod=employees,word=all">
-                        <form th:action="|/${searchmethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();">
+                        <form th:action="|/${searchmethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
                             <input type ="image" th:src="@{/image/download.png}" alt="download" width="25" height="25"  name="download_file">
                         </form>
                         </div>
                         <div th:if="${word}">
-                            <form th:action="|/${searchmethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();">
+                            <form th:action="|/${searchmethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
                                 <input type ="image" th:src="@{/image/download.png}" alt="download" width="25" height="25"  name="download_file">
                             </form>
                         </div>
-
                     </div>
                 </div>
 
@@ -92,11 +91,11 @@
         <table border="1" style="border-collapse: collapse" class="t-line tablesorter" id="emptable">
             <thead>
             <tr class="t-top" height="40">
-                    <th>社員番号</th>
-                    <th>社員名</th>
-                    <th>役職</th>
-                    <th>所属部署</th>
-                <th></th>
+                    <th width="20%" class="fixed">社員番号</th>
+                    <th width="30%" class="fixed">社員名</th>
+                    <th width="25%" class="fixed">役職</th>
+                    <th width="15%" class="fixed">所属部署</th>
+                <th width="10%" class="fixed" style="cursor: default"></th>
             </tr>
             </thead>
             <tbody>
@@ -106,7 +105,7 @@
                 <td><p th:text="${emp.position_id}" style="display: none;"></p><p th:text="${emp.position}"></p></td>
                 <td><p th:text="${emp.department_id}" style="display: none;"></p><p th:text="${emp.department}"></p></td>
                 <td>
-                    <form th:action="@{detail/{id}(id=${emp.employee_id})}" method="get">
+                    <form th:action="@{detail/{id}(id=${emp.employee_id})}" method="get" style="text-align: center">
                         <input type="submit" value="詳細">
                     </form>
                 </td>
