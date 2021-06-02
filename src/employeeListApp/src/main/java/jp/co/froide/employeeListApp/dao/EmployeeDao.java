@@ -2,6 +2,8 @@ package jp.co.froide.employeeListApp.dao;
 
 import jp.co.froide.employeeListApp.entity.All;
 import jp.co.froide.employeeListApp.entity.Department;
+import jp.co.froide.employeeListApp.entity.Position;
+import jp.co.froide.employeeListApp.form.EmployeeForm;
 import org.seasar.doma.*;
 import org.seasar.doma.boot.ConfigAutowireable;
 import org.seasar.doma.jdbc.Config;
@@ -35,6 +37,10 @@ public interface EmployeeDao {
     @Select
     All selectDetail(Integer id);
 
+    @Sql("SELECT /*%expand*/* FROM employees WHERE employee_id = /* id */0")
+    @Select
+    Employee selectById(Integer id);
+
 
     @Sql("SELECT employee_id, name, furigana, joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
             "email, phone_number FROM employees " +
@@ -54,15 +60,6 @@ public interface EmployeeDao {
             "ORDER BY /*# item */ /*# way */")
     @Select
     List<Employee> sort(String item, String way);
-
-    @Sql("SELECT department FROM departments")
-    @Select
-    List<All> selectDepartment();
-
-    @Sql("SELECT position FROM positions")
-    @Select
-    List<All> selectPosition();
-
 
     @Insert
     int insert(Employee employee);
