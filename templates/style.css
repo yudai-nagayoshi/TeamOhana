@@ -175,7 +175,7 @@ th,td{
 .holder{
     border: solid 2px rgb(206, 204, 204);
     border-radius: 5px;
-    padding: 4px 15px;
+    padding: 4px 10px;
     width: 215px;
     height: 35px;
 }
@@ -183,7 +183,7 @@ th,td{
 .mail-holder{
     border: solid 2px rgb(206, 204, 204);
     border-radius: 5px;
-    padding: 4px 5px 4px 15px;
+    padding: 4px 0px 4px 10px;
     width: 265px;
     height: 35px;
 }
@@ -191,7 +191,7 @@ th,td{
 .select-holder{
     border: solid 2px rgb(206, 204, 204);
     border-radius: 5px;
-    padding: 4px 15px;
+    padding: 4px 10px;
     width: 215px;
     background: transparent url(https://haniwaman.com/wp/wp-content/uploads/2018/12/form-css-arrow.png) no-repeat center right 8px/10px 10px ;
 }

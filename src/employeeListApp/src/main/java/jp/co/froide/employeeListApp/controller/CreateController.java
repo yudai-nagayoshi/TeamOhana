@@ -1,8 +1,12 @@
 package jp.co.froide.employeeListApp.controller;
 
+import jp.co.froide.employeeListApp.dao.DepartmentDao;
 import jp.co.froide.employeeListApp.dao.EmployeeDao;
+import jp.co.froide.employeeListApp.dao.PositionDao;
 import jp.co.froide.employeeListApp.entity.All;
+import jp.co.froide.employeeListApp.entity.Department;
 import jp.co.froide.employeeListApp.entity.Employee;
+import jp.co.froide.employeeListApp.entity.Position;
 import jp.co.froide.employeeListApp.form.EmployeeForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,11 +26,22 @@ public class CreateController {
     @Autowired
     EmployeeDao dao;
 
+    @Autowired
+    DepartmentDao d_Dao;
+
+    @Autowired
+    PositionDao p_Dao;
+
+    @GetMapping("test")
+    public List<Department> test(){
+        return d_Dao.selectAll();
+    }
+
 
     @GetMapping("/create")
     public String create(Model model){
-        List<All> dp  = dao.selectDepartment();
-        List<All> ps = dao.selectPosition();
+        List<Department> dp  = d_Dao.selectAll();
+        List<Position> ps = p_Dao.selectAll();
         model.addAttribute("position",ps);
         model.addAttribute("department",dp);
         model.addAttribute("EmployeeForm",new EmployeeForm());
@@ -35,18 +50,23 @@ public class CreateController {
 
     @PostMapping("/create")
     public String create(@Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br, RedirectAttributes attributes, Model model){
-        List<All> dp  = dao.selectDepartment();
-        List<All> ps = dao.selectPosition();
+        List<Department> dp  = d_Dao.selectAll();
+        List<Position> ps = p_Dao.selectAll();
         model.addAttribute("position",ps);
         model.addAttribute("department",dp);
+        //model.addAttribute("EmployeeForm",new EmployeeForm());
         if(br.hasErrors()){
-            System.out.print(form.getPosition_id());
-            System.out.print(form.getDepartment_id());
             return "create";
         }
-
-//        System.out.print(form.getPosition_id());
-        //dao.insert(form);
+        Employee employee = new Employee();
+        employee.setName(form.getName());
+        employee.setEmail(form.getEmail());
+        employee.setFurigana(form.getFurigana());
+        employee.setPhone_number(form.getPhone_number());
+        employee.setDepartment_id(form.getDepartment_id());
+        employee.setPosition_id(form.getPosition_id());
+        employee.setJoining_date(form.getJoining_date());
+        dao.insert(employee);
         return "redirect:/main";
     }
 
