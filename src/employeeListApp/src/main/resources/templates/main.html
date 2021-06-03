@@ -104,7 +104,7 @@
                 <td><p th:text="${emp.department_id}" style="display: none;"></p><p th:text="${emp.department}"></p></td>
                 <td>
                     <form th:action="@{detail/{id}(id=${emp.employee_id})}" method="get" style="text-align: center">
-                        <input type="submit" value="詳細">
+                        <input type="submit" value="詳細" class="detail">
                     </form>
                 </td>
 

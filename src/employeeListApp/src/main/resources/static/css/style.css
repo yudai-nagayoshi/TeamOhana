@@ -13,6 +13,10 @@ h1{
     font-size: 40px;
 }
 
+h1 button:hover{
+    color: black;
+}
+
 a {
   color: rgb(55, 55, 55);
   text-decoration: none;
@@ -146,8 +150,8 @@ th, td{
 }
 
 
-.information{
-    text-align: center;
+.detail:hover{
+    color: black;
 }
 
 .top{
