@@ -63,6 +63,14 @@ h2{
     display: flex;
 }
 
+.mainicons img{
+    opacity: 0.7;
+}
+
+.mainicons img:hover{
+    opacity: 1.0;
+}
+
 .t-line tr:nth-child(even) td{
     background-color: #EFEFEF;
 }
@@ -148,6 +156,14 @@ th, td{
     bottom: 30px;
 }
 
+.top img{
+    opacity: 0.7;
+}
+
+.top img:hover{
+    opacity: 1.0;
+}
+
 
 /* 詳細画面*/
 .icons{
@@ -158,6 +174,11 @@ th, td{
 
 .icons img{
     cursor: pointer;
+    opacity: 0.7;
+}
+
+.icons img:hover{
+    opacity: 1.0;
 }
 
 .detail-contents{
