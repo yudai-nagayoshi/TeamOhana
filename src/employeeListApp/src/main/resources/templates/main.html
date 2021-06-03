@@ -56,6 +56,7 @@
                         </div>
                     </form>
                     <div class="mainicons">
+
                         <form th:action="@{/create}" method="post" style="padding: 3px 8px 0px 8px">
                             <button><img th:src="@{/image/plus_color.png}" width="25" height="25"></button>
                         </form>
@@ -66,7 +67,7 @@
                         </div>
                         <div th:if="${word}">
                             <form th:action="|/${searchmethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
-                                <input type ="image" th:src="@{/image/download.png}" alt="download" width="25" height="25"  name="download_file">
+                                <button><img th:src="@{/image/download_color.png}" width="25" height="25"></button>
                             </form>
                         </div>
                     </div>
@@ -103,8 +104,10 @@
                 <td><p th:text="${emp.position_id}" style="display: none;"></p><p th:text="${emp.position}"></p></td>
                 <td><p th:text="${emp.department_id}" style="display: none;"></p><p th:text="${emp.department}"></p></td>
                 <td>
-                    <form th:action="@{detail/{id}(id=${emp.employee_id})}" method="get" style="text-align: center">
-                        <input type="submit" value="詳細" class="detail">
+                    <form th:action="@{detail/{id}(id=${emp.employee_id})}" style="text-align: center">
+                        <input type="text" name="searchmethod" th:value="${searchmethod}" style="display: none;">
+                        <input type="text" name="word" th:value="${word}" style="display: none;">
+                        <input type="submit" value="詳細" >
                     </form>
                 </td>
 
