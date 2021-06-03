@@ -6,6 +6,16 @@
         <link rel="icon" type="image/png" th:href="@{image/favicon.png}">
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
         <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
+
+        <script  th:inline="javascript">
+            window.onload = function() {
+                select = document.getElementById('selectdp').options;
+                select[5].selected = true;
+                select = document.getElementById('selectps').options;
+                select[4].selected = true;
+            }
+        </script>
+
     </head>
 
     <body>
@@ -53,14 +63,14 @@
             <h2>業務情報</h2>
             <div class="edit-business">
                 <p>役職：</p>
-                <select th:field="*{position_id}" name="position" class="select-holder">
+                <select th:field="*{position_id}" name="position" class="select-holder" id="selectps">
                     <option th:each="ps : ${position}" th:value="${ps.position_id}" th:inline="text" th:selected="${ps.position_id == select}">[[${ps.position}]]</option>
                     <span th:if="${#fields.hasErrors('position_id')}" th:errors="*{position_id}" class="business-error"></span>
                 </select>
             </div>
             <div class="edit-business">
                 <p>所属部署：</p>
-                <select th:field="*{department_id}" name="department" class="select-holder" >
+                <select th:field="*{department_id}" name="department" class="select-holder" id="selectdp">
                     <option th:each="dp : ${department}" th:value="${dp.department_id}" th:inline="text">[[${dp.department}]]</option>
                     <span th:if="${#fields.hasErrors('department_id')}" th:errors="*{department_id}" class="business-error"></span>
                 </select>
