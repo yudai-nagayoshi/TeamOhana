@@ -13,6 +13,10 @@ h1{
     font-size: 40px;
 }
 
+h1 button:hover{
+    color: black;
+}
+
 a {
   color: rgb(55, 55, 55);
   text-decoration: none;
@@ -61,6 +65,14 @@ h2{
 
 .mainicons{
     display: flex;
+}
+
+.mainicons img{
+    opacity: 0.7;
+}
+
+.mainicons img:hover{
+    opacity: 1.0;
 }
 
 .t-line tr:nth-child(even) td{
@@ -138,14 +150,22 @@ th, td{
 }
 
 
-.information{
-    text-align: center;
+.detail:hover{
+    color: black;
 }
 
 .top{
     position: fixed;
     right: 35px;
     bottom: 30px;
+}
+
+.top img{
+    opacity: 0.7;
+}
+
+.top img:hover{
+    opacity: 1.0;
 }
 
 
@@ -158,6 +178,11 @@ th, td{
 
 .icons img{
     cursor: pointer;
+    opacity: 0.7;
+}
+
+.icons img:hover{
+    opacity: 1.0;
 }
 
 .detail-contents{

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>社員名簿|詳細</title>
-    <link rel="icon" type="image/png" href="image/favicon.png">
-
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link href="./style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" th:href="@{/image/favicon.png}">
+    <link rel="stylesheet" th:href="@{/https://unpkg.com/ress/dist/ress.min.css}">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -15,68 +14,74 @@
     <div class="sub-header">
         <h2>詳細</h2>
         <div class="icons">
-            <a href="./update.html">
-                <img src="image/edit.png" alt="edit" width="25" height="25" style="margin-right: 40px;" onmouseover="this.src='./image/edit_color.png'" onmouseout="this.src='./image/edit.png'">
-            </a>
-            <img src="image/dustbox.png" alt="delete" width="25" height="25" onmouseover="this.src='./image/dustbox_color.png'" onmouseout="this.src='./image/dustbox.png'" onclick="MoveCheck2();">
+            <div th:action="@{/update/{id}(id=${list.employee_id})}" method="get" >
+                <input type="image" th:src="@{/image/edit.png}" alt="edit" width="25" height="25" style="margin-right: 40px;">
+            </div>
+            <form th:action="@{/delete/{id}(id=${list.employee_id})}" method="post" onsubmit=" return MoveCheck2();">
+                <input type="image" th:src="@{/image/dustbox.png}" alt="delete" width="25" height="25" name="delete">
+            </form>
         </div>
+    </div>
 
-        <script>
+    <script>
+
                     function MoveCheck2() {
                         ret=confirm( "社員データーを削除してよろしいですか？" );
-                        if (ret == true) {
-                            location.href = "file:///Users/minori-hagihara/Documents/TeamOhana/templates/detail.html"
+                        if(ret){
+                            return true;
+                        } else {
+                            return false;
                         }
                     }
-                </script>
-
-    </div>
+    </script>
 </header>
 <div class="detail-contents">
     <div class="items">
         <h2>社員情報</h2>
         <div class="date">
             <p>追加日：</p>
-            <p></p>年xx月xx日</p>
+            <p th:text="${list.adding_date}"></p>
             <p>　最終更新日：</p>
-            <p>年xx月xx日</p>
+            <p th:text="${list.last_update_date}"></p>
         </div>
     </div>
     <div class="employee-number">
         <p>社員番号：</p>
-        <p>12345</p>
+        <p th:text="${list.employee_id}"></p>
     </div>
     <div class="items">
-        <p class="name">山田　太郎</p>
+        <p class="name" th:text="${list.name}"></p>
         <div class="phone-number">
             <p>携帯番号：</p>
-            <p>xxxxxxxxxx</p>
+            <p th:text="${list.phone_number}"></p>
         </div>
     </div>
     <div class="items">
-        <p class="furigana">ヤマダ　タロウ</p>
+        <p class="furigana" th:text="${list.furigana}"></p>
         <div class="mail">
             <p>メールアドレス：</p>
-            <p>xxxx@xxxx.co.jp</p>
+            <p th:text="${list.email}"></p>
         </div>
     </div>
     <h2>業務情報</h2>
     <div class="business">
         <p>役職：</p>
-        <p>〇〇</p>
+        <p th:text="${list.position}"></p>
     </div>
     <div class="business">
         <p>所属部署：</p>
-        <p>〇〇部</p>
+        <p th:text="${list.department}"></p>
     </div>
     <div class="business">
         <p>入社年月日：</p>
-        <p>xxxx年xx月xx日</p>
-        <p>（〇〇年）</p>
+        <p th:text="${list.joining_date}"></p>
+        <p th:text="${list.period}"></p>
     </div>
 </div>
 <div class="detail-btn">
-    <a href="./main.html">戻る</a>
+    <form th:action="@{main}" method="get">
+        <input type="submit" value="戻る">
+    </form>
 </div>
 </body>
 </html>

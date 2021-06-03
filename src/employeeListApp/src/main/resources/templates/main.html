@@ -35,12 +35,10 @@
     </head>
 
     <body>
-        <header >
-            <div>
-                <form th:action="@{main}">
-                    <h1><button>社員名簿</button></h1>
-                </form>
-            </div>
+        <header>
+            <form th:action="@{main}">
+                <h1><button>社員名簿</button></h1>
+            </form>
             <div class="sub-header">
                 <h2>社員一覧</h2>
 
@@ -58,12 +56,17 @@
                         </div>
                     </form>
                     <div class="mainicons">
+<<<<<<< HEAD
                         <form th:action="@{/create}" method="get" style="padding: 3px 8px 0px 8px">
                             <input type ="image" name="submit" width="25" height="25" th:src="@{/image/plus.png}" alt="新規登録">
+=======
+                        <form th:action="@{/create}" method="post" style="padding: 3px 8px 0px 8px">
+                            <button><img th:src="@{/image/plus_color.png}" width="25" height="25"></button>
+>>>>>>> main
                         </form>
                         <div th:if="${word}==null" th:with="searchmethod=employees,word=all">
                         <form th:action="|/${searchmethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
-                            <input type ="image" th:src="@{/image/download.png}" alt="download" width="25" height="25"  name="download_file">
+                            <button><img th:src="@{/image/download_color.png}" width="25" height="25"></button>
                         </form>
                         </div>
                         <div th:if="${word}">
@@ -106,7 +109,7 @@
                 <td><p th:text="${emp.department_id}" style="display: none;"></p><p th:text="${emp.department}"></p></td>
                 <td>
                     <form th:action="@{detail/{id}(id=${emp.employee_id})}" method="get" style="text-align: center">
-                        <input type="submit" value="詳細">
+                        <input type="submit" value="詳細" class="detail">
                     </form>
                 </td>
 
@@ -115,8 +118,7 @@
         </table>
         <p style="text-align: center; color: red">[[${error}]]</p>
         <div class="top">
-
-            <a href="#"><input type="image" th:src="@{/image/top.png}" alt="page_top" width="50" height="50" ></a></div>
+            <a href="#"><img th:src="@{/image/top.png}" alt="page_top" width="50" height="50" ></a>
         </div>
     </body>
 </html>
