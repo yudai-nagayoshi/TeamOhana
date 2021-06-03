@@ -30,8 +30,8 @@ public interface EmployeeDao {
     @Select
     List<All> selectAll();
 
-    @Sql("SELECT employee_id, name, furigana, joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
-            "email, phone_number,DATE_FORMAT(adding_date,'%Y-%m-%d') as adding_date,DATE_FORMAT(last_update_date,'%Y-%m-%d') as last_update_date FROM employees " +
+    @Sql("SELECT employee_id, name, furigana, DATE_FORMAT(joining_date,'%Y年%m月%d日')as joining_date, TIMESTAMPDIFF(YEAR, joining_date, CURRENT_DATE)as period,employees.position_id,positions.position, employees.department_id,departments.department, " +
+            "email, phone_number,DATE_FORMAT(adding_date,'%Y年%m月%d日') as adding_date,DATE_FORMAT(last_update_date,'%Y年%m月%d日') as last_update_date FROM employees " +
             "INNER JOIN positions ON employees.position_id = positions.position_id " +
             "INNER JOIN departments ON employees.department_id = departments.department_id WHERE employee_id = /* id */0")
     @Select

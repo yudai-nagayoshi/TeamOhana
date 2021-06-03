@@ -14,11 +14,11 @@
     <div class="sub-header">
         <h2>詳細</h2>
         <div class="icons">
-            <div th:action="@{/update/{id}(id=${list.employee_id})}" method="get" >
-                <input type="image" th:src="@{/image/edit.png}" alt="edit" width="25" height="25" style="margin-right: 40px;">
-            </div>
+            <form th:action="@{/update/{id}(id=${list.employee_id})}" method="get" >
+                <button><img th:src="@{/image/edit.png}" alt="edit" width="25" height="25" style="margin-right: 40px;"></button>
+            </form>
             <form th:action="@{/delete/{id}(id=${list.employee_id})}" method="post" onsubmit=" return MoveCheck2();">
-                <input type="image" th:src="@{/image/dustbox.png}" alt="delete" width="25" height="25" name="delete">
+                <button name="delete"><img th:src="@{/image/dustbox.png}" alt="delete" width="25" height="25"></button>
             </form>
         </div>
     </div>
@@ -75,11 +75,13 @@
     <div class="business">
         <p>入社年月日：</p>
         <p th:text="${list.joining_date}"></p>
-        <p th:text="${list.period}"></p>
+        <p>([[${list.period}]]年)</p>
     </div>
 </div>
 <div class="detail-btn">
-    <form th:action="@{main}" method="get">
+    <form th:action="@{/main}" method="get">
+        <input type="text" name="searchmethod" th:value="${searchmethod}" style="display: none;">
+        <input type="text" name="word" th:value="${word}" style="display: none;">
         <input type="submit" value="戻る">
     </form>
 </div>
