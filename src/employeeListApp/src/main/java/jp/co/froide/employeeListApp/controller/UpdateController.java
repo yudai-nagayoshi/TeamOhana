@@ -38,7 +38,7 @@ public class UpdateController {
         List<Position> ps = p_dao.selectAll();
         model.addAttribute("position",ps);
         model.addAttribute("department",dp);
-        All list = dao.selectDetail(id);
+        Employee list = dao.selectById(id);
         EmployeeForm employeeForm = new EmployeeForm();
         employeeForm.setName(list.getName());
         employeeForm.setEmail(list.getEmail());
@@ -48,13 +48,13 @@ public class UpdateController {
         employeeForm.setPosition_id(list.getPosition_id());
         employeeForm.setJoining_date(list.getJoining_date());
         model.addAttribute("EmployeeForm",employeeForm);
-        model.addAttribute("list",list);
+        model.addAttribute("id",id);
         return "update";
     }
 
 
     @PostMapping("update/{id}")
-    public String update(@PathVariable("id")Integer id,@Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br, RedirectAttributes attributes, Model model){
+    public String update(@PathVariable("id")Integer id,@Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br,Model model){
         List<Department> dp  = d_dao.selectAll();
         List<Position> ps = p_dao.selectAll();
         model.addAttribute("position",ps);
@@ -64,8 +64,8 @@ public class UpdateController {
         employee.setEmail(form.getEmail());
         employee.setFurigana(form.getFurigana());
         employee.setPhone_number(form.getPhone_number());
-        employee.setDepartment_id(2);
-        employee.setPosition_id(1);
+        employee.setDepartment_id(form.getDepartment_id());
+        employee.setPosition_id(form.getPosition_id());
         employee.setJoining_date(form.getJoining_date());
         All list = dao.selectDetail(id);
         model.addAttribute("list",list);
@@ -73,6 +73,6 @@ public class UpdateController {
             return "update";
         }
         dao.update(employee);
-        return "redirect:/detail";
+        return "redirect:/detail/"+id;
     }
 }
