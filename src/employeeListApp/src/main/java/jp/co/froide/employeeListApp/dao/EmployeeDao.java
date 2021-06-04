@@ -61,10 +61,10 @@ public interface EmployeeDao {
     @Select
     List<Employee> sort(String item, String way);
 
-    @Insert
+    @Insert(exclude = {"adding_date","last_update_date"})
     int insert(Employee employee);
 
-    @Update
+    @Update(exclude = {"adding_date","last_update_date"})
     int update(Employee employee);
 
     @Delete
