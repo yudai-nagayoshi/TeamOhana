@@ -17,11 +17,11 @@ public class EmployeeForm implements Serializable {
     private String name;
 
     @NotBlank(message = "※入力必須項目です。")
-    @Pattern(regexp ="^[ア-ン゛゜ァ-ォャ-ョー「」、]*+　+[ア-ン゛゜ァ-ォャ-ョー「」、]*+$", message = "※名字と名前の間に全角スペースを入れてください。(全角カタカナ)")
+    @Pattern(regexp ="^[ア-ン゛゜ァ-ォャ-ョー]*+　+[ア-ン゛゜ァ-ォャ-ョー]*+$", message = "※名字と名前の間に全角スペースを入れてください。(全角カタカナ)")
     private String furigana;
 
     @NotBlank(message = "※入力必須項目です。")
-    @Pattern(regexp = "^([a-zA-Z0-9\\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\\._-]+)+$", message = "※メールアドレスの形式が正しくありません。")
+    @Pattern(regexp = "^([a-zA-Z0-9\\._-])*@([a-zA-Z0-9])+([a-zA-Z0-9\\._-]+)+$", message = "※メールアドレスの形式が正しくありません。")
     private String email;
 
     @NotBlank(message = "※入力必須項目です。")

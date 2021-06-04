@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>社員名簿|詳細</title>
     <link rel="icon" type="image/png" th:href="@{/image/favicon.png}">
-    <link rel="stylesheet" th:href="@{/https://unpkg.com/ress/dist/ress.min.css}">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 
@@ -17,10 +17,10 @@
         <h2>詳細</h2>
         <div class="icons">
             <form th:action="@{/update/{id}(id=${list.employee_id})}" method="get" >
-                <button><img th:src="@{/image/edit_color.png}" alt="edit" width="25" height="25" style="margin-right: 40px;"></button>
+                <button><img th:src="@{/image/edit_color.png}" alt="edit" width="25" height="25" style="margin-right: 40px;" title="編集"></button>
             </form>
             <form th:action="@{/delete/{id}(id=${list.employee_id})}" method="post" onsubmit=" return MoveCheck2();">
-                <button name="delete"><img th:src="@{/image/dustbox_color.png}" alt="delete" width="25" height="25"></button>
+                <button name="delete"><img th:src="@{/image/dustbox_color.png}" alt="delete" width="25" height="25" title="削除"></button>
             </form>
         </div>
     </div>

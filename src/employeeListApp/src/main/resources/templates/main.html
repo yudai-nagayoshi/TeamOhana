@@ -58,16 +58,16 @@
                     <div class="mainicons">
 
                         <form th:action="@{/create}" method="post" style="padding: 3px 8px 0px 8px">
-                            <button><img th:src="@{/image/plus_color.png}" width="25" height="25"></button>
+                            <button><img th:src="@{/image/plus_color.png}" width="25" height="25" title="新規登録"></button>
                         </form>
                         <div th:if="${word}==null" th:with="searchmethod=employees,word=all">
                         <form th:action="|/${searchmethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
-                            <button><img th:src="@{/image/download_color.png}" width="25" height="25"></button>
+                            <button name ="download_file"><img th:src="@{/image/download_color.png}" width="25" height="25" title="ダウンロード"></button>
                         </form>
                         </div>
                         <div th:if="${word}">
                             <form th:action="|/${searchmethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
-                                <button><img th:src="@{/image/download_color.png}" width="25" height="25"></button>
+                                <button name ="download_file"><img th:src="@{/image/download_color.png}" width="25" height="25"></button>
                             </form>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                     <form th:action="@{detail/{id}(id=${emp.employee_id})}" style="text-align: center">
                         <input type="text" name="searchmethod" th:value="${searchmethod}" style="display: none;">
                         <input type="text" name="word" th:value="${word}" style="display: none;">
-                        <input type="submit" value="詳細" >
+                        <input type="submit" value="詳細" class="detail">
                     </form>
                 </td>
 

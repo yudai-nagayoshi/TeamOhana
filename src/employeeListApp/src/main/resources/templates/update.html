@@ -10,14 +10,14 @@
 
     <body>
         <header>
-            <form th:action="@{main}">
+            <form th:action="@{/main}">
                 <h1><button>社員名簿</button></h1>
             </form>
             <div class="sub-header">
                 <h2>編集</h2>
             </div>
         </header>
-        <form th:object="${EmployeeForm}" th:action="@{/update/{id}(id=${list.employee_id})}" id="form1" enctype="multipart/form-data" method="post">
+        <form th:object="${EmployeeForm}" th:action="@{/update/{id}(id=${id})}" id="form1" enctype="multipart/form-data" method="post">
         <div class="detail-contents">
             <h2>社員情報</h2>
             <div class="items">
@@ -72,11 +72,11 @@
             </div>
         </div>
             <div class="edit-btn">
-                <div class="back" style="margin-right: 25px;">
-                    <input type="submit" value="戻る" th:formaction="@{/detail}" formmethod="get">
-                </div>
                 <div class="save">
                     <input type="submit" value="保存"/>
+                </div>
+                <div class="back" style="margin-right: 25px;">
+                    <input type="submit" value="戻る" th:formaction="@{/detail/{id}(id=${id})}" formmethod="get">
                 </div>
             </div>
         </form>
