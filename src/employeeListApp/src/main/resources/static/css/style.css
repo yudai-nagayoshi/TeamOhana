@@ -22,7 +22,7 @@ a {
   text-decoration: none;
 }
 
-.sub_header{
+.sub-header{
     background-color: rgb(255, 207, 77);
     padding: 10px 0px 10px 5%;
     display: flex;
@@ -34,7 +34,7 @@ h2{
 }
 
 /* 一覧画面 */
-.sub_header .contents{
+.sub-header .contents{
     margin: 0 6% 0 auto;
     display: flex;
 }
@@ -48,7 +48,7 @@ h2{
     background-color: white;
 }
 
-.sub_header select{
+.sub-header select{
     color: rgb(55, 55, 55);
     font-weight: bold;
     border-top-left-radius: 20px;
@@ -63,26 +63,26 @@ h2{
     cursor: pointer;
 }
 
-.main_icons{
+.main-icons{
     display: flex;
 }
 
-.main_icons img{
+.main-icons img{
     opacity: 0.7;
 }
 
-.main_icons img:hover{
+.main-icons img:hover{
     opacity: 1.0;
 }
 
-.t_line tr:nth-child(even) td{
+.t-line tr:nth-child(even) td{
     background-color: #EFEFEF;
 }
-.t_line tr:nth-child(odd) td{
+.t-line tr:nth-child(odd) td{
     background-color: white;
 }
 
-.t_line tr:first-child, .t_line td:first-child{
+.t-line tr:first-child, .t-line td:first-child{
     background-color: rgb(255, 207, 77);
 }
 
@@ -103,12 +103,12 @@ th, td{
     top: 0;
 }
 
-.table_sorter th{
+.table-sorter th{
     position: relative;
     cursor: pointer;
     text-align: left;
 }
-.table_sorter th::before, .table_sorter th::after{
+.table-sorter th::before, .table-sorter th::after{
     content: '';
     position: absolute;
     z-index: 2;
@@ -119,33 +119,33 @@ th, td{
     border-color: #333 transparent;
     pointer-events: none;
 }
-.table_sorter th::before{
+.table-sorter th::before{
     border-bottom-style: solid;
     border-top: none;
     top: 30%;
 }
-.table_sorter th::after{
+.table-sorter th::after{
     border-top-style: solid;
     border-bottom: none;
     bottom: 30%;
 }
-.table_sorter th.table_sorter-headerAsc:after{
+.table-sorter th.tablesorter-headerAsc:after{
     border: none;
 }
-.table_sorter th.table_sorter-headerAsc:before{
+.table-sorter th.tablesorter-headerAsc:before{
     top: 50%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
 }
-.table_sorter th.table_sorter-headerDesc:before{
+.table-sorter th.tablesorter-headerDesc:before{
     border: none;
 }
-.table_sorter th.table_sorter-headerDesc:after{
+.table-sorter th.tablesorter-headerDesc:after{
     top: 50%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
 }
-.table_sorter th.sorter-false:before, .table_sorter th.sorter-false:after{
+.table-sorter th.sorter-false:before, .table-sorter th.sorter-false:after{
     border: none;
 }
 
@@ -185,7 +185,7 @@ th, td{
     opacity: 1.0;
 }
 
-.detail_contents{
+.detail-contents{
     margin: 50px auto;
     border: solid 3px rgb(245, 172, 62);
     width: 70%;
@@ -202,7 +202,7 @@ th, td{
     margin-left: 45%;
 }
 
-.employee_number{
+.employee-number{
     font-size: 20px;
     margin: 10px 20px;
     display: flex;
@@ -213,7 +213,7 @@ th, td{
     margin: 5px 50px 0px;
 }
 
-.phone_number{
+.phone-number{
     display: flex;
     margin-top: 15px;
     margin-left: 15%;
@@ -237,7 +237,7 @@ th, td{
     font-size: 18px;
 }
 
-.detail_btn {
+.detail-btn {
     width: 70px;
     text-align: center;
     margin : 40px auto;
@@ -246,7 +246,7 @@ th, td{
     border-radius: 10px;
 }
 
-.detail_btn:hover{
+.detail-btn:hover{
     background-color: rgb(240, 191, 84);
 }
 
@@ -260,7 +260,7 @@ th, td{
     height: 35px;
 }
 
-.select_holder{
+.select-holder{
     border: solid 2px rgb(206, 204, 204);
     border-radius: 5px;
     padding: 6px 10px;
@@ -280,7 +280,7 @@ th, td{
     margin: 20px;
 }
 
-.edit_furigana{
+.edit-furigana{
     margin-top: 20px;
 }
 
@@ -294,16 +294,16 @@ th, td{
     margin: 20px;
 }
 
-.edit_mail{
+.edit-mail{
     margin-top: 20px;
 }
 
-.edit_business{
+.edit-business{
     margin: 15px 50px;
     display: flex;
 }
 
-.business_error{
+.business-error{
     margin: 8px 10px;
     color: red;
     font-size: 13px;
@@ -321,7 +321,7 @@ th, td{
     background-color: rgb(240, 191, 84);
 }
 
-.edit_btn {
+.edit-btn {
     display: flex;
     justify-content: center;
     margin: 40px auto;

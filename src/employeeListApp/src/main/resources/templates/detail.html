@@ -13,7 +13,7 @@
     <form th:action="@{/main}">
         <h1><button>社員名簿</button></h1>
     </form>
-    <div class="sub_header">
+    <div class="sub-header">
         <h2>詳細</h2>
         <div class="icons">
             <form th:action="@{/update/{id}(id=${list.employee_id})}" method="get" >
@@ -37,7 +37,7 @@
                     }
     </script>
 </header>
-<div class="detail_contents">
+<div class="detail-contents">
     <div class="items">
         <h2>社員情報</h2>
         <div class="date">
@@ -47,13 +47,13 @@
             <p th:text="${list.last_update_date}"></p>
         </div>
     </div>
-    <div class="employee_number">
+    <div class="employee-number">
         <p>社員番号：</p>
         <p th:text="${list.employee_id}"></p>
     </div>
     <div class="items">
         <p class="name" th:text="${list.name}"></p>
-        <div class="phone_number">
+        <div class="phone-number">
             <p>携帯番号：</p>
             <p th:text="${list.phone_number}"></p>
         </div>
@@ -80,9 +80,9 @@
         <p>([[${list.period}]]年)</p>
     </div>
 </div>
-<div class="detail_btn">
+<div class="detail-btn">
     <form th:action="@{/main}" method="get">
-        <input type="text" name="search_method" th:value="${search_method}" style="display: none;">
+        <input type="text" name="searchMethod" th:value="${searchMethod}" style="display: none;">
         <input type="text" name="word" th:value="${word}" style="display: none;">
         <input type="submit" value="戻る">
     </form>
