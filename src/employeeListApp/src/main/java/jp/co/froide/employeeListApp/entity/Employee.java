@@ -4,16 +4,12 @@ import lombok.Getter;
 import lombok.Setter;
 import org.seasar.doma.*;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.io.Serializable;
-import java.util.Date;
-
 @Getter
 @Setter
 @Entity
 @Table(name = "employees")
 public class Employee{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer employee_id;
@@ -35,5 +31,4 @@ public class Employee{
     private String adding_date;
 
     private String last_update_date;
-
 }

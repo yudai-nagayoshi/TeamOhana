@@ -6,17 +6,17 @@ import org.seasar.doma.Dao;
 import org.seasar.doma.Select;
 import org.seasar.doma.Sql;
 import org.seasar.doma.boot.ConfigAutowireable;
-
 import java.util.List;
 
 @ConfigAutowireable
 @Dao
 public interface PositionDao {
-    @Sql("select /*%expand*/* from positions")
+
+    @Sql("SELECT /*%expand*/* FROM positions")
     @Select
     List<Position> selectAll();
 
-    @Sql("select /*%expand*/* from positions where position_id = /* id */0")
+    @Sql("SELECT /*%expand*/* FROM positions WHERE position_id = /* id */0")
     @Select
     Department selectById(Integer id);
 }

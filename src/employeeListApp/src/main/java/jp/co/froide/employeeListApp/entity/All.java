@@ -8,6 +8,7 @@ import org.seasar.doma.*;
 @Setter
 @Entity
 public class All {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer employee_id;

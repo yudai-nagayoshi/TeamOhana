@@ -3,7 +3,6 @@ package jp.co.froide.employeeListApp.controller;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.core.JsonProcessingException;
-
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import jp.co.froide.employeeListApp.dao.EmployeeDao;
@@ -15,7 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +21,7 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping("/")
 public class MainController {
+
     @Autowired
     EmployeeDao employeeDao;
 
@@ -33,26 +32,26 @@ public class MainController {
     }
 
     @GetMapping("main")
-    public String search(@RequestParam(name = "searchmethod", required = false) String searchmethod, @RequestParam(name = "word", required = false) String word, Model model) {
+    public String search(@RequestParam(name = "search_method", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, Model model) {
         String error = "";
         if (employeeDao.selectAll().size() == 0){
             error = "社員が登録されていません";
         }
-        if(searchmethod == null && word == null || word.equals("")) {
+        if(searchMethod == null && word == null || word.equals("")) {
             word = null;
             this.list = employeeList();
-            model.addAttribute("employeeList", list);
-            model.addAttribute("searchmethod", searchmethod);
+            model.addAttribute("employee_list", list);
+            model.addAttribute("search_method", searchMethod);
             model.addAttribute("word", word);
             model.addAttribute("error", error);
             return "main";
         }
 
-        this.list = employeeDao.search(searchmethod, word);
+        this.list = employeeDao.search(searchMethod, word);
 
-        if(searchmethod.equals("name")){ //名前検索時、かなカナ検索に対応
-            List<All> listex = employeeDao.search("furigana", word);
-            for (All i : listex){
+        if(searchMethod.equals("name")){ //名前検索時、かなカナ検索に対応
+            List<All> listEx = employeeDao.search("furigana", word);
+            for (All i : listEx){
                 boolean match = false;
                 for (All j : this.list){
                     if(i.getEmployee_id() == j.getEmployee_id()){
@@ -63,22 +62,21 @@ public class MainController {
                 if(match == false) this.list.add(i);
             }
         }
+
         if(list.size() == 0){
             error = "検索結果がありません";
         }
 
-        model.addAttribute("employeeList", list);
-        model.addAttribute("searchmethod", searchmethod);
+        model.addAttribute("employee_list", list);
+        model.addAttribute("search_method", searchMethod);
         model.addAttribute("word", word);
         model.addAttribute("error", error);
         return "main";
-
     }
 
     //メイン機能CSVダウンロード
     @GetMapping(value = "/*.csv", params = "download_file",
-            produces = MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=UTF-8; Content-Disposition: attachment"
-    )
+            produces = MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=UTF-8; Content-Disposition: attachment")
     @ResponseBody
     public Object index() throws JsonProcessingException {
         // User名取得
@@ -89,6 +87,7 @@ public class MainController {
         List<EmployeeCsv> csvs = todos.stream().map(
                 e -> new EmployeeCsv(e.getEmployee_id(), e.getName(), e.getFurigana(), e.getJoining_date(), e.getPosition(), e.getDepartment(), e.getPhone_number(), e.getEmail())
         ).collect(Collectors.toList());
+
         // ファイルをダウンロードさせる
         CsvMapper mapper = new CsvMapper();
         CsvSchema schema = mapper.schemaFor(EmployeeCsv.class).withHeader();
@@ -115,6 +114,5 @@ public class MainController {
         private String phone_number;
         @JsonProperty("email")
         private String email;
-
     }
 }

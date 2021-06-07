@@ -8,15 +8,12 @@ import jp.co.froide.employeeListApp.entity.Department;
 import jp.co.froide.employeeListApp.entity.Employee;
 import jp.co.froide.employeeListApp.entity.Position;
 import jp.co.froide.employeeListApp.form.EmployeeForm;
-import org.hibernate.sql.Select;
-import org.seasar.doma.jdbc.criteria.context.SetOperationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -51,7 +48,6 @@ public class UpdateController {
         model.addAttribute("id",id);
         return "update";
     }
-
 
     @PostMapping("update/{id}")
     public String update(@PathVariable("id")Integer id,@Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br,Model model){
