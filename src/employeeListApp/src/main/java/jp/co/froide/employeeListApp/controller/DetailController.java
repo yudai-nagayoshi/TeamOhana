@@ -15,18 +15,18 @@ public class DetailController {
     EmployeeDao employeeDao;
 
     @GetMapping("detail/{id}")
-    public String detailList(@RequestParam(name = "search_method", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word,@PathVariable("id") Integer id, Model model) {
-        All list = employeeDao.selectDetail(id);
-        model.addAttribute("list", list);
-        model.addAttribute("search_method", searchMethod);
-        model.addAttribute("word", word);
-        return "detail";
+    public String detailList(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word,@PathVariable("id") Integer id, Model model) {
+            All list = employeeDao.selectDetail(id);
+            model.addAttribute("list", list);
+            model.addAttribute("searchMethod", searchMethod);
+            model.addAttribute("word", word);
+            return "detail";
     }
 
     @PostMapping("delete/{id}")
     public String delete(@PathVariable("id") Integer id, Employee employee) {
-        employee.setEmployee_id(id);
-        employeeDao.delete(employee);
-        return "redirect:/main";
+            employee.setEmployee_id(id);
+            employeeDao.delete(employee);
+            return "redirect:/main";
     }
 }

@@ -28,11 +28,11 @@ public class MainController {
     List<All> list = new ArrayList<>();
 
     public List<All> employeeList() {
-        return employeeDao.selectAll();
+            return employeeDao.selectAll();
     }
 
     @GetMapping("main")
-    public String search(@RequestParam(name = "search_method", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, Model model) {
+    public String search(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, Model model) {
         String error = "";
         if (employeeDao.selectAll().size() == 0){
             error = "社員が登録されていません";
@@ -40,8 +40,8 @@ public class MainController {
         if(searchMethod == null && word == null || word.equals("")) {
             word = null;
             this.list = employeeList();
-            model.addAttribute("employee_list", list);
-            model.addAttribute("search_method", searchMethod);
+            model.addAttribute("employeeList", list);
+            model.addAttribute("searchMethod", searchMethod);
             model.addAttribute("word", word);
             model.addAttribute("error", error);
             return "main";
@@ -67,15 +67,15 @@ public class MainController {
             error = "検索結果がありません";
         }
 
-        model.addAttribute("employee_list", list);
-        model.addAttribute("search_method", searchMethod);
+        model.addAttribute("employeeList", list);
+        model.addAttribute("searchMethod", searchMethod);
         model.addAttribute("word", word);
         model.addAttribute("error", error);
         return "main";
     }
 
     //メイン機能CSVダウンロード
-    @GetMapping(value = "/*.csv", params = "download_file",
+    @GetMapping(value = "/*.csv", params = "downloadFile",
             produces = MediaType.APPLICATION_OCTET_STREAM_VALUE + "; charset=UTF-8; Content-Disposition: attachment")
     @ResponseBody
     public Object index() throws JsonProcessingException {
