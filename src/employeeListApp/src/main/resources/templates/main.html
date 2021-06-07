@@ -13,7 +13,7 @@
 
         <script>
             $(document).ready(function() {
-                $('#emptable').tablesorter({
+                $('#emptable').table_sorter({
                     headers: {
                         4: { sorter: false }
                     }
@@ -23,9 +23,9 @@
         </script>
         <script  th:inline="javascript">
             window.onload = function() {
-                select = document.getElementById('searchmethod').options;
+                select = document.getElementById('search_method').options;
                 for(let i = 0; i < select.length; i++ ){
-                    if( select[i].value === [[${searchmethod}]] ) {
+                    if( select[i].value === [[${search_method}]] ) {
                         select[i].selected = true;
                         break;
                     }
@@ -39,13 +39,13 @@
             <form th:action="@{main}">
                 <h1><button>社員名簿</button></h1>
             </form>
-            <div class="sub-header">
+            <div class="sub_header">
                 <h2>社員一覧</h2>
 
                 <div class="contents">
                     <form th:action="@{main}">
                         <div class="search" style="margin: 0px 8px">
-                            <select name="searchmethod" class="selectbox" id="searchmethod">
+                            <select name="search_method" class="select_box" id="search_method">
                                 <option value="name">名前</option>
                                 <option value="employee_id">社員番号</option>
                                 <option value="position">役職</option>
@@ -55,18 +55,18 @@
                             <input type="submit" value="&#xf002;" class="fas">
                         </div>
                     </form>
-                    <div class="mainicons">
+                    <div class="main_icons">
 
                         <form th:action="@{/create}" method="post" style="padding: 3px 8px 0px 8px">
                             <button><img th:src="@{/image/plus_color.png}" width="25" height="25" title="新規登録"></button>
                         </form>
-                        <div th:if="${word}==null" th:with="searchmethod=employees,word=all">
-                        <form th:action="|/${searchmethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
+                        <div th:if="${word}==null" th:with="search_method=employees,word=all">
+                        <form th:action="|/${search_method}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
                             <button name ="download_file"><img th:src="@{/image/download_color.png}" width="25" height="25" title="ダウンロード"></button>
                         </form>
                         </div>
                         <div th:if="${word}">
-                            <form th:action="|/${searchmethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
+                            <form th:action="|/${search_method}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
                                 <button name ="download_file"><img th:src="@{/image/download_color.png}" width="25" height="25"></button>
                             </form>
                         </div>
@@ -87,9 +87,9 @@
             </div>
         </header>
 
-        <table border="1" style="border-collapse: collapse" class="t-line tablesorter" id="emptable">
+        <table border="1" style="border-collapse: collapse" class="t_line table_sorter" id="emp_table">
             <thead>
-            <tr class="t-top" height="40">
+            <tr class="t_top" height="40">
                     <th width="20%" class="fixed">社員番号</th>
                     <th width="30%" class="fixed">社員名</th>
                     <th width="25%" class="fixed">役職</th>
@@ -98,14 +98,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr height="40" th:each="emp : ${employeeList}">
+            <tr height="40" th:each="emp : ${employee_list}">
                 <td th:text="${emp.employee_id}"></td>
                 <td th:text="${emp.name}"></td>
                 <td><p th:text="${emp.position_id}" style="display: none;"></p><p th:text="${emp.position}"></p></td>
                 <td><p th:text="${emp.department_id}" style="display: none;"></p><p th:text="${emp.department}"></p></td>
                 <td>
                     <form th:action="@{detail/{id}(id=${emp.employee_id})}" style="text-align: center">
-                        <input type="text" name="searchmethod" th:value="${searchmethod}" style="display: none;">
+                        <input type="text" name="search_method" th:value="${search_method}" style="display: none;">
                         <input type="text" name="word" th:value="${word}" style="display: none;">
                         <input type="submit" value="詳細" class="detail">
                     </form>

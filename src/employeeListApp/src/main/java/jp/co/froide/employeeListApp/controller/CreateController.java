@@ -3,7 +3,6 @@ package jp.co.froide.employeeListApp.controller;
 import jp.co.froide.employeeListApp.dao.DepartmentDao;
 import jp.co.froide.employeeListApp.dao.EmployeeDao;
 import jp.co.froide.employeeListApp.dao.PositionDao;
-import jp.co.froide.employeeListApp.entity.All;
 import jp.co.froide.employeeListApp.entity.Department;
 import jp.co.froide.employeeListApp.entity.Employee;
 import jp.co.froide.employeeListApp.entity.Position;
@@ -16,7 +15,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -32,15 +30,9 @@ public class CreateController {
     @Autowired
     PositionDao p_Dao;
 
-    @GetMapping("test")
-    public List<Department> test(){
-        return d_Dao.selectAll();
-    }
-
-
     @GetMapping("/create")
     public String create(Model model){
-        List<Department> dp  = d_Dao.selectAll();
+        List<Department> dp = d_Dao.selectAll();
         List<Position> ps = p_Dao.selectAll();
         model.addAttribute("position",ps);
         model.addAttribute("department",dp);
@@ -49,12 +41,11 @@ public class CreateController {
     }
 
     @PostMapping("/create")
-    public String create(@Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br, RedirectAttributes attributes, Model model){
+    public String create(@Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br,Model model){
         List<Department> dp  = d_Dao.selectAll();
         List<Position> ps = p_Dao.selectAll();
         model.addAttribute("position",ps);
         model.addAttribute("department",dp);
-        //model.addAttribute("EmployeeForm",new EmployeeForm());
         if(br.hasErrors()){
             return "create";
         }
@@ -69,6 +60,4 @@ public class CreateController {
         dao.insert(employee);
         return "redirect:/main";
     }
-
 }
-
