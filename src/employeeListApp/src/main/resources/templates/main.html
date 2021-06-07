@@ -100,7 +100,7 @@
             <tbody>
             <tr height="40" th:each="emp : ${employeeList}">
                 <td th:text="${emp.employee_id}"></td>
-                <td th:text="${emp.name}"></td>
+                <td><p th:text="${emp.furigana}" style="display: none;"></p><p th:text="${emp.name}"></p></td>
                 <td><p th:text="${emp.position_id}" style="display: none;"></p><p th:text="${emp.position}"></p></td>
                 <td><p th:text="${emp.department_id}" style="display: none;"></p><p th:text="${emp.department}"></p></td>
                 <td>
