@@ -59,6 +59,12 @@
                 </div>
             </div>
             <h2>業務情報</h2>
+            <div class="form">
+                <p>社員番号：</p>
+                <input type="text" th:type="text" th:field="*{employee_id}" class="holder">
+            </div>
+            <span th:if="${#fields.hasErrors('employee_id')}" th:errors="*{employee_id}" class="error"></span>
+            <p style="font-size: 13px; color: red">[[${error}]]</p>
             <div class="edit-business">
                 <p>役職：</p>
                 <select th:field="*{position_id}" name="position" class="select-holder" id="select-ps">
@@ -84,6 +90,8 @@
                     <input type="submit" value="保存">
                 </div>
                 <div class="back" style="margin-right: 25px;">
+                    <input type="text" name="searchMethod" th:value="${searchMethod}" style="display: none;">
+                    <input type="text" name="word" th:value="${word}" style="display: none;">
                     <input type="submit" value="戻る" th:formaction="@{/main}" formmethod="get">
                 </div>
             </div>

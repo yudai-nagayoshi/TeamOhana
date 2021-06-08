@@ -57,8 +57,10 @@
                     </form>
                     <div class="main-icons">
 
-                        <form th:action="@{/create}" method="post" style="padding: 3px 8px 0px 8px">
-                            <button><img th:src="@{/image/plus_color.png}" width="25" height="25" title="新規登録"></button>
+                        <form th:action="@{/create}" method="get" style="padding: 3px 8px 0px 8px">
+                            <input type="text" name="searchMethod" th:value="${searchMethod}" style="display: none;">
+                            <input type="text" name="word" th:value="${word}" style="display: none;">
+                            <button><img th:src="@{/image/plus_color.png}" width="25" height="25"></button>
                         </form>
                         <div th:if="${word}==null" th:with="searchMethod=employees,word=all">
                         <form th:action="|/${searchMethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
