@@ -11,7 +11,6 @@ import org.seasar.doma.*;
 public class Employee{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer employee_id;
 
     private String name;

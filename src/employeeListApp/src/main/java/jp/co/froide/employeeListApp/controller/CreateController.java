@@ -8,6 +8,7 @@ import jp.co.froide.employeeListApp.entity.Employee;
 import jp.co.froide.employeeListApp.entity.Position;
 import jp.co.froide.employeeListApp.form.EmployeeForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +16,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.List;
 
 @Controller
@@ -30,33 +33,46 @@ public class CreateController {
     PositionDao p_Dao;
 
     @GetMapping("/create")
-    public String create(Model model){
-            List<Department> dp = d_Dao.selectAll();
-            List<Position> ps = p_Dao.selectAll();
-            model.addAttribute("position",ps);
-            model.addAttribute("department",dp);
-            model.addAttribute("EmployeeForm",new EmployeeForm());
-            return "create";
+    public String create(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, Model model){
+        List<Department> dp = d_Dao.selectAll();
+        List<Position> ps = p_Dao.selectAll();
+        model.addAttribute("position",ps);
+        model.addAttribute("department",dp);
+        model.addAttribute("EmployeeForm",new EmployeeForm());
+        model.addAttribute("searchMethod", searchMethod);
+        model.addAttribute("word", word);
+        model.addAttribute("error","");
+        return "create";
     }
 
     @PostMapping("/create")
-    public String create(@Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br,Model model){
-            List<Department> dp = d_Dao.selectAll();
-            List<Position> ps = p_Dao.selectAll();
-            model.addAttribute("position", ps);
-            model.addAttribute("department", dp);
-            if (br.hasErrors()) {
-                return "create";
-            }
-            Employee employee = new Employee();
-            employee.setName(form.getName());
-            employee.setEmail(form.getEmail());
-            employee.setFurigana(form.getFurigana());
-            employee.setPhone_number(form.getPhone_number());
-            employee.setDepartment_id(form.getDepartment_id());
-            employee.setPosition_id(form.getPosition_id());
-            employee.setJoining_date(form.getJoining_date());
+    public String create(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, @Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br,Model model){
+        List<Department> dp = d_Dao.selectAll();
+        List<Position> ps = p_Dao.selectAll();
+        model.addAttribute("error","");
+        model.addAttribute("position", ps);
+        model.addAttribute("department", dp);
+        model.addAttribute("searchMethod", searchMethod);
+        model.addAttribute("word", word);
+        if (br.hasErrors()) {
+            return "create";
+        }
+        Employee employee = new Employee();
+        employee.setEmployee_id(form.getEmployee_id());
+        employee.setName(form.getName());
+        employee.setEmail(form.getEmail());
+        employee.setFurigana(form.getFurigana());
+        employee.setPhone_number(form.getPhone_number());
+        employee.setDepartment_id(form.getDepartment_id());
+        employee.setPosition_id(form.getPosition_id());
+        employee.setJoining_date(form.getJoining_date());
+        try{
             dao.insert(employee);
             return "redirect:/main";
+        }
+        catch (DuplicateKeyException e){
+            model.addAttribute("error","登録されている社員番号です");
+            return "create";
+        }
     }
 }

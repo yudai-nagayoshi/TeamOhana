@@ -9,6 +9,9 @@ import java.io.Serializable;
 public class EmployeeForm implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    @NotNull(message = "※入力必須項目です。")
+    @Digits(fraction = 0, integer = 10, message = "※10桁以内の半角数字を入力してください")
     private Integer employee_id;
 
     @NotBlank(message = "※入力必須項目です。")
@@ -20,7 +23,7 @@ public class EmployeeForm implements Serializable {
     private String furigana;
 
     @NotBlank(message = "※入力必須項目です。")
-    @Pattern(regexp = "^[a-zA-Z0-9.!#$%&'*+\\\\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\\\.[a-zA-Z0-9-]+)*$", message = "※メールアドレスの形式が正しくありません。")
+    @Pattern(regexp = "^[a-zA-Z0-9.!#$%&'*+\\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$", message = "※メールアドレスの形式が正しくありません。")
     private String email;
 
     @NotBlank(message = "※入力必須項目です。")
