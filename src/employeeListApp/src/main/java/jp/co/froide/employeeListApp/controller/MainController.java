@@ -34,10 +34,12 @@ public class MainController {
     @GetMapping("main")
     public String search(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, Model model) {
         String error = "";
-        if (employeeDao.selectAll().size() == 0){
+        int count = employeeDao.count();
+        model.addAttribute("count",count);
+        if (count == 0) {
             error = "社員が登録されていません";
         }
-        if(searchMethod == null && word == null || word.equals("")) {
+        if (searchMethod == null && word == null || word.equals("")) {
             word = null;
             this.list = employeeList();
             model.addAttribute("employeeList", list);
@@ -46,27 +48,23 @@ public class MainController {
             model.addAttribute("error", error);
             return "main";
         }
-
         this.list = employeeDao.search(searchMethod, word);
-
-        if(searchMethod.equals("name")){ //名前検索時、かなカナ検索に対応
+        if (searchMethod.equals("name")) { //名前検索時、かなカナ検索に対応
             List<All> listEx = employeeDao.search("furigana", word);
-            for (All i : listEx){
+            for (All i : listEx) {
                 boolean match = false;
-                for (All j : this.list){
-                    if(i.getEmployee_id() == j.getEmployee_id()){
+                for (All j : this.list) {
+                    if (i.getEmployee_id() == j.getEmployee_id()) {
                         match = true;
                         break;
                     }
                 }
-                if(match == false) this.list.add(i);
+                if (match == false) this.list.add(i);
             }
         }
-
-        if(list.size() == 0){
+        if (list.size() == 0) {
             error = "検索結果がありません";
         }
-
         model.addAttribute("employeeList", list);
         model.addAttribute("searchMethod", searchMethod);
         model.addAttribute("word", word);
