@@ -15,14 +15,22 @@
     </form>
     <div class="sub-header">
         <h2>詳細</h2>
-        <div class="icons">
-            <form th:action="@{/update/{id}(id=${list.employee_id})}" method="get" >
-                <button><img th:src="@{/image/edit_color.png}" alt="edit" width="25" height="25" style="margin-right: 40px;" title="編集"></button>
-            </form>
-            <form th:action="@{/delete/{id}(id=${list.employee_id})}" method="post" onsubmit=" return MoveCheck2();">
-                <button name="delete"><img th:src="@{/image/dustbox_color.png}" alt="delete" width="25" height="25" title="削除"></button>
-            </form>
+        <div class="date">
+            <p>追加日：</p>
+            <p th:text="${list.adding_date}"></p>
+            <p>　最終更新日：</p>
+            <p th:text="${list.last_update_date}"></p>
         </div>
+    </div>
+</header>
+<div class="detail-contents">
+    <div class="icons">
+        <form th:action="@{/update/{id}(id=${list.employee_id})}" method="get" >
+            <button><img th:src="@{/image/edit_color.png}" alt="edit" width="25" height="25" style="margin-right: 40px;" title="編集"></button>
+        </form>
+        <form th:action="@{/delete/{id}(id=${list.employee_id})}" method="post" onsubmit=" return MoveCheck2();">
+            <button name="delete"><img th:src="@{/image/dustbox_color.png}" alt="delete" width="25" height="25" title="削除"></button>
+        </form>
     </div>
 
     <script>
@@ -36,48 +44,41 @@
                         }
                     }
     </script>
-</header>
-<div class="detail-contents">
+
     <div class="items">
-        <h2>社員情報</h2>
-        <div class="date">
-            <p>追加日：</p>
-            <p th:text="${list.adding_date}"></p>
-            <p>　最終更新日：</p>
-            <p th:text="${list.last_update_date}"></p>
+        <div class="left">
+            <h2>個人情報</h2>
+            <p class="name" th:text="${list.name}"></p>
+            <p class="furigana" th:text="${list.furigana}"></p>
+            <div class="phone-number">
+                <p>携帯番号：</p>
+                <p th:text="${list.phone_number}"></p>
+            </div>
+            <div class="mail">
+                <p>メールアドレス：</p>
+                <p th:text="${list.email}"></p>
+            </div>
         </div>
-    </div>
-    <div class="employee-number">
-        <p>社員番号：</p>
-        <p th:text="${list.employee_id}"></p>
-    </div>
-    <div class="items">
-        <p class="name" th:text="${list.name}"></p>
-        <div class="phone-number">
-            <p>携帯番号：</p>
-            <p th:text="${list.phone_number}"></p>
+        <div class="right">
+            <h2>業務情報</h2>
+            <div class="business">
+                <p>社員番号：</p>
+                <p th:text="${list.employee_id}"></p>
+            </div>
+            <div class="business">
+                <p>役職：</p>
+                <p th:text="${list.position}"></p>
+            </div>
+            <div class="business">
+                <p>所属部署：</p>
+                <p th:text="${list.department}"></p>
+            </div>
+            <div class="business">
+                <p>入社年月日：</p>
+                <p th:text="${list.joining_date}"></p>
+                <p>([[${list.period}]]年)</p>
+            </div>
         </div>
-    </div>
-    <div class="items">
-        <p class="furigana" th:text="${list.furigana}"></p>
-        <div class="mail">
-            <p>メールアドレス：</p>
-            <p th:text="${list.email}"></p>
-        </div>
-    </div>
-    <h2>業務情報</h2>
-    <div class="business">
-        <p>役職：</p>
-        <p th:text="${list.position}"></p>
-    </div>
-    <div class="business">
-        <p>所属部署：</p>
-        <p th:text="${list.department}"></p>
-    </div>
-    <div class="business">
-        <p>入社年月日：</p>
-        <p th:text="${list.joining_date}"></p>
-        <p>([[${list.period}]]年)</p>
     </div>
 </div>
 <div class="detail-btn">
