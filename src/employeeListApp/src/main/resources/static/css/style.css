@@ -65,6 +65,7 @@ h2{
 
 .main-icons{
     display: flex;
+    justify-content: flex-end;
 }
 
 .main-icons img{
@@ -171,9 +172,9 @@ th, td{
 
 /* 詳細画面*/
 .icons{
-    margin: 5px 8% 0 auto;
-    margin: 0 6% 0 auto;
     display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
 }
 
 .icons img{
@@ -198,41 +199,37 @@ th, td{
 
 .date{
     display: flex;
+    margin: 0 4% 0 auto;
     font-size: 15px;
-    margin-left: 45%;
-}
-
-.employee-number{
-    font-size: 20px;
-    margin: 10px 20px;
-    display: flex;
+    padding: 6px 0;
 }
 
 .name{
     font-size: 30px;
-    margin: 5px 50px 0px;
+    margin: 25px 50px 0px;
 }
 
 .phone-number{
     display: flex;
     margin-top: 15px;
-    margin-left: 15%;
+    margin-left: 10%;
     font-size: 18px;
 }
 
 .furigana{
-    margin: 0 50px 40px;
+    margin: 0 50px 30px;
     font-size: 15px;
 }
 
 .mail{
     display: flex;
     font-size: 18px;
-    margin-left: 15%;
+
+    margin: 15px 10%;
 }
 
 .business{
-    margin: 15px 50px;
+    margin: 30px 50px;
     display: flex;
     font-size: 18px;
 }
@@ -277,7 +274,7 @@ th, td{
 
 .left{
     width: 50%;
-    margin: 20px;
+    margin: 0 30px;
 }
 
 .edit-furigana{
@@ -291,7 +288,6 @@ th, td{
 
 .right{
     width: 50%;
-    margin: 20px;
 }
 
 .edit-mail{
