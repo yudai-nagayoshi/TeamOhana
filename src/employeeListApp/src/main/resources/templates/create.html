@@ -96,14 +96,14 @@
                 </div>
             </div>
             <div class="edit-btn">
-                <div class="save">
+                <button class="save">
                     <input type="submit" value="保存">
-                </div>
-                <div class="back" style="margin-right: 60px;">
+                </button>
+                <button class="back" style="margin-right: 60px;" type="submit" th:formaction="@{/main}" formmethod="get">
                     <input type="text" name="searchMethod" th:value="${searchMethod}" style="display: none;">
                     <input type="text" name="word" th:value="${word}" style="display: none;">
                     <input type="submit" value="戻る" th:formaction="@{/main}" formmethod="get">
-                </div>
+                </button>
             </div>
         </form>
     </body>
