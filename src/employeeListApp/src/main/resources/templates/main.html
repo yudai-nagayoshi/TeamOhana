@@ -40,11 +40,11 @@
             var offset = 100;
             var duration = 500;
             jQuery(window).scroll(function() {
-            if (jQuery(this).scrollTop() > offset) {
-            jQuery('.top').fadeIn(duration);
-            } else {
-            jQuery('.top').fadeOut(duration);
-            }
+                if (jQuery(this).scrollTop() > offset) {
+                     jQuery('.top').fadeIn(duration);
+                } else {
+                     jQuery('.top').fadeIn(duration);
+                 }
             });
 
             jQuery('.top').click(function(event) {
