@@ -37,6 +37,7 @@ public class UpdateController {
         model.addAttribute("department",dp);
         Employee list = dao.selectById(id);
         EmployeeForm employeeForm = new EmployeeForm();
+        employeeForm.setEmployee_id(""+id);
         employeeForm.setName(list.getName());
         employeeForm.setEmail(list.getEmail());
         employeeForm.setFurigana(list.getFurigana());

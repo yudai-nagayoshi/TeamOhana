@@ -70,6 +70,7 @@
                 <input type="date" th:type="date" th:field="*{joining_date}" class="holder">
                 <span th:if="${#fields.hasErrors('joining_date')}" th:errors="*{joining_date}" class="business-error"></span>
             </div>
+            <input type="text" th:type="text" th:field="*{employee_id}" style="display: none;">
         </div>
             <div class="edit-btn">
                 <div class="save">
