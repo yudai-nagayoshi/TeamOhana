@@ -56,13 +56,16 @@ public class CreateController {
         model.addAttribute("searchMethod", searchMethod);
         model.addAttribute("word", word);
 
-        if (br.hasErrors()) {
-            for(All e : dao.selectAll()){
-                if(form.getEmployee_id().equals(""+e.getEmployee_id())){
-                    model.addAttribute("error","※登録されている社員番号です。");
-                    break;
-                }
+        boolean over = false;
+        for(All e : dao.selectAll()){
+            if(form.getEmployee_id().equals(""+e.getEmployee_id())){
+                model.addAttribute("error","※登録されている社員番号です。");
+                over = true;
+                break;
             }
+        }
+
+        if (br.hasErrors() || over) {
             return "create";
         }
 
