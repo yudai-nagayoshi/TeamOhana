@@ -58,7 +58,7 @@ public class CreateController {
 
         boolean over = false;
         for(All e : dao.selectAll()){
-            if(form.getEmployee_id().equals(""+e.getEmployee_id())){
+            if(form.getEmployee_id().equals(e.getEmployee_id())){
                 model.addAttribute("error","※登録されている社員番号です。");
                 over = true;
                 break;

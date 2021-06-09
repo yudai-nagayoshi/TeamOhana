@@ -10,8 +10,8 @@ import org.seasar.doma.*;
 public class All {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer employee_id;
+    String employee_id;
+
     String name;
     String furigana;
     String email;

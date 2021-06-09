@@ -30,14 +30,14 @@ public class UpdateController {
     PositionDao p_dao;
 
     @GetMapping("update/{id}")
-    public String update(@PathVariable("id")Integer id ,Model model){
+    public String update(@PathVariable("id")String id ,Model model){
         List<Department> dp  = d_dao.selectAll();
         List<Position> ps = p_dao.selectAll();
         model.addAttribute("position",ps);
         model.addAttribute("department",dp);
         Employee list = dao.selectById(id);
         EmployeeForm employeeForm = new EmployeeForm();
-        employeeForm.setEmployee_id(""+id);
+        employeeForm.setEmployee_id(id);
         employeeForm.setName(list.getName());
         employeeForm.setEmail(list.getEmail());
         employeeForm.setFurigana(list.getFurigana());
@@ -51,7 +51,7 @@ public class UpdateController {
     }
 
     @PostMapping("update/{id}")
-    public String update(@PathVariable("id")Integer id,@Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br,Model model){
+    public String update(@PathVariable("id")String id,@Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br,Model model){
         List<Department> dp  = d_dao.selectAll();
         List<Position> ps = p_dao.selectAll();
         model.addAttribute("position",ps);

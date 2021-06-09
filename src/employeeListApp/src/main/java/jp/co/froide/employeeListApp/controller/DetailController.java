@@ -15,7 +15,7 @@ public class DetailController {
     EmployeeDao employeeDao;
 
     @GetMapping("detail/{id}")
-    public String detailList(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word,@PathVariable("id") Integer id, Model model) {
+    public String detailList(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word,@PathVariable("id") String id, Model model) {
             All list = employeeDao.selectDetail(id);
             model.addAttribute("list", list);
             model.addAttribute("searchMethod", searchMethod);

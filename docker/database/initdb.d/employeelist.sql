@@ -110,7 +110,7 @@ INSERT INTO `departments` VALUES (6,"所属なし");
 
 DROP TABLE IF EXISTS `employees`;
 CREATE TABLE `employees` (
-  `employee_id` int(11) NOT NULL,
+  `employee_id` varchar(10) NOT NULL,
   `name` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
   `furigana` varchar(20) NOT NULL COLLATE utf8mb4_unicode_ci,
   `email` varchar(40) NOT NULL COLLATE utf8mb4_unicode_ci,

@@ -98,7 +98,7 @@ public class MainController {
     @JsonPropertyOrder({"employee_id", "name", "furigana","joining_date", "position", "department", "phone_number", "email"})
     public class EmployeeCsv {
         @JsonProperty("employee_id")
-        private Integer id;
+        private String id;
         @JsonProperty("name")
         private String name;
         @JsonProperty("furigana")
