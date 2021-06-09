@@ -27,13 +27,13 @@
     <div class="icons">
         <form th:action="@{/update/{id}(id=${list.employee_id})}" method="get" >
             <button class="tooltip">
-                <img th:src="@{/image/edit_color.png}" alt="edit" title="編集" width="25" height="25" style="margin: 0px 15px;">
+                <img th:src="@{/image/edit_color.png}" alt="edit" width="25" height="25" style="margin: 0px 15px;">
                 <span class="tooltip-text">編集</span>
             </button>
         </form>
         <form th:action="@{/delete/{id}(id=${list.employee_id})}" method="post" onsubmit=" return MoveCheck2();">
             <button name="delete" class="tooltip">
-                <img th:src="@{/image/dustbox_color.png}" alt="delete" title="削除" width="25" height="25" style="margin: 0px 15px;">
+                <img th:src="@{/image/dustbox_color.png}" alt="delete" width="25" height="25" style="margin: 0px 15px;">
                 <span class="tooltip-text">削除</span>
             </button>
         </form>

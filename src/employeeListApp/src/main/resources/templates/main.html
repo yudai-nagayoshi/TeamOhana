@@ -82,21 +82,24 @@
                             <input type="text" name="searchMethod" th:value="${searchMethod}" style="display: none;">
                             <input type="text" name="word" th:value="${word}" style="display: none;">
                             <button class="tooltip">
-                                <img th:src="@{/image/plus_color.png}" width="25" height="25" title="新規登録">
+                                <img th:src="@{/image/plus_color.png}" width="25" height="25">
                                 <span class="tooltip-text">新規登録</span>
                             </button>
                         </form>
                         <div th:if="${word}==null" th:with="searchMethod=employees,word=all">
                         <form th:action="|/${searchMethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
                             <button name ="downloadFile" class="tooltip">
-                                <img th:src="@{/image/download_color.png}" width="25" height="25" title="ダウンロード">
+                                <img th:src="@{/image/download_color.png}" width="25" height="25">
                                 <span class="tooltip-text">ダウンロード</span>
                             </button>
                         </form>
                         </div>
                         <div th:if="${word}">
                             <form th:action="|/${searchMethod}_${word}.csv|" method="get" onsubmit=" return MoveCheck();" style="padding: 3px 8px 0px 8px">
-                                <button name ="downloadFile"><img th:src="@{/image/download_color.png}" width="25" height="25"></button>
+                                <button name ="downloadFile" class="tooltip">
+                                    <img th:src="@{/image/download_color.png}" width="25" height="25">
+                                    <span class="tooltip-text">ダウンロード</span>
+                                </button>
                             </form>
                         </div>
                     </div>
