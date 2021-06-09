@@ -27,7 +27,7 @@ public class EmployeeForm implements Serializable {
     private String email;
 
     @NotBlank(message = "※入力必須項目です。")
-    @Pattern(regexp = "^\\d{10,11}$", message = "※10~11桁の半角数字のみで入力してください。")
+    @Pattern(regexp = "^\\d{10,11}$", message = "※10~11桁の半角数字を入力してください。")
     private String phone_number;
 
     @DateTimeFormat(pattern = "yyyyMMdd")
