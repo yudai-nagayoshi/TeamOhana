@@ -18,60 +18,70 @@
             </div>
         </header>
         <form th:object="${EmployeeForm}" th:action="@{/update/{id}(id=${id})}" id="form1" enctype="multipart/form-data" method="post">
-        <div class="detail-contents">
-            <h2>社員情報</h2>
-            <div class="items">
-                <div class="left">
-                    <div class="form">
-                        <p>社員名：</p>
-                        <input type="text" th:type="text" th:field="*{name}" class="holder">
-                    </div>
-                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
-                    <div class="edit-furigana">
+            <div class="detail-contents">
+                <div class="edit-items">
+                    <div class="left">
+                        <h2>社員情報</h2>
                         <div class="form">
-                            <p>フリガナ：</p>
+                            <p class="word">社員名：</p>
+                            <input type="text" th:type="text" th:field="*{name}" class="holder">
+                        </div>
+                        <ul th:each="error:${#fields.errors('name')}" class="error">
+                            <li  th:text="${error}" ></li>
+                        </ul>
+                        <div class="form">
+                            <p class="word">フリガナ：</p>
                             <input type="text" th:type="text" th:field="*{furigana}" class="holder">
                         </div>
-                        <span th:if="${#fields.hasErrors('furigana')}" th:errors="*{furigana}" class="error"></span>
-                    </div>
-                </div>
-                <div class="right">
-                    <div class="form">
-                        <p>携帯番号(ハイフン無し)：</p>
-                        <input type="text" th:type="text" th:field="*{phone_number}" class="holder">
-                    </div>
-                    <span th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}" class="error"></span>
-                    <div class="edit-mail">
+                        <ul th:each="error:${#fields.errors('furigana')}" class="error">
+                            <li  th:text="${error}" ></li>
+                        </ul>
                         <div class="form">
-                            <p>メールアドレス：</p>
+                            <p class="word">携帯番号(ハイフン無し)：</p>
+                            <input type="text" th:type="text" th:field="*{phone_number}" class="holder">
+                        </div>
+                        <ul th:each="error:${#fields.errors('phone_number')}" class="error">
+                            <li  th:text="${error}" ></li>
+                        </ul>
+                        <div class="form">
+                            <p class="word">メールアドレス：</p>
                             <input type="text" th:type="text" th:field="*{email}" class="holder">
                         </div>
+                        <ul th:each="error:${#fields.errors('email')}" class="error">
+                            <li  th:text="${error}" ></li>
+                        </ul>
                     </div>
-                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
+                    <div class="right">
+                        <h2>業務情報</h2>
+                        <div class="business">
+                            <p class="word">社員番号：</p>
+                            <p th:text="*{employee_id}"></p>
+                        </div>
+                        <div class="form">
+                            <p class="word">役職：</p>
+                            <select th:field="*{position_id}" name="position" class="select-holder" id="select-ps">
+                                <option th:each="ps : ${position}" th:value="${ps.position_id}" th:inline="text" th:selected="${ps.position_id == select}">[[${ps.position}]]</option>
+                                <span th:if="${#fields.hasErrors('position_id')}" th:errors="*{position_id}" class="error"></span>
+                            </select>
+                        </div>
+                        <div class="form">
+                            <p class="word">所属部署：</p>
+                            <select th:field="*{department_id}" name="department" class="select-holder" id="select-dp">
+                                <option th:each="dp : ${department}" th:value="${dp.department_id}" th:inline="text">[[${dp.department}]]</option>
+                                <span th:if="${#fields.hasErrors('department_id')}" th:errors="*{department_id}" class="error"></span>
+                            </select>
+                        </div>
+                        <div class="form">
+                            <p class="word">入社年月日：</p>
+                            <input type="date" th:type="date" th:field="*{joining_date}" class="holder">
+                        </div>
+                        <ul th:each="error:${#fields.errors('joining_date')}" class="error">
+                            <li  th:text="${error}" ></li>
+                        </ul>
+                    </div>
+                    <input type="text" th:type="text" th:field="*{employee_id}" style="display: none;">
                 </div>
             </div>
-            <h2>業務情報</h2>
-            <div class="edit-business">
-                <p>役職：</p>
-                <select th:field="*{position_id}" name="position" class="select-holder">
-                    <option th:each="ps : ${position}" th:value="${ps.position_id}" th:inline="text" th:selected="${ps.position_id == select}">[[${ps.position}]]</option>
-                    <span th:if="${#fields.hasErrors('position_id')}" th:errors="*{position_id}" class="business-error"></span>
-                </select>
-            </div>
-            <div class="edit-business">
-                <p>所属部署：</p>
-                <select th:field="*{department_id}" name="department" class="select-holder" >
-                    <option th:each="dp : ${department}" th:value="${dp.department_id}" th:inline="text">[[${dp.department}]]</option>
-                    <span th:if="${#fields.hasErrors('department_id')}" th:errors="*{department_id}" class="business-error"></span>
-                </select>
-            </div>
-            <div class="edit-business">
-                <p>入社年月日：</p>
-                <input type="date" th:type="date" th:field="*{joining_date}" class="holder">
-                <span th:if="${#fields.hasErrors('joining_date')}" th:errors="*{joining_date}" class="business-error"></span>
-            </div>
-            <input type="text" th:type="text" th:field="*{employee_id}" style="display: none;">
-        </div>
             <div class="edit-btn">
                 <div class="save">
                     <input type="submit" value="保存"/>
