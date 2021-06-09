@@ -34,14 +34,14 @@ public class MainController {
     @GetMapping("main")
     public String search(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, Model model) {
         String error = "";
-        int count = employeeDao.count();
-        model.addAttribute("count",count);
-        if (count == 0) {
+        model.addAttribute("count",list.size());
+        if ( employeeDao.selectAll().size() == 0) {
             error = "社員が登録されていません";
         }
         if (searchMethod == null && word == null || word.equals("")) {
             word = null;
             this.list = employeeList();
+            model.addAttribute("count",list.size());
             model.addAttribute("employeeList", list);
             model.addAttribute("searchMethod", searchMethod);
             model.addAttribute("word", word);
@@ -49,6 +49,7 @@ public class MainController {
             return "main";
         }
         this.list = employeeDao.search(searchMethod, word);
+        model.addAttribute("count",list.size());
         if (searchMethod.equals("name")) { //名前検索時、かなカナ検索に対応
             List<All> listEx = employeeDao.search("furigana", word);
             for (All i : listEx) {
