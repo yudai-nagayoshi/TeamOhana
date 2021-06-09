@@ -140,11 +140,10 @@ ALTER TABLE `employees`
 
 ALTER TABLE `employees`
  ADD FOREIGN KEY (`position_id`) REFERENCES `positions`(`position_id`);
+
 --
--- テーブルの AUTO_INCREMENT `employees`
+-- CURRENT_TIMESTAMPの設定
 --
-ALTER TABLE `employees`
-  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `employees`
   MODIFY `adding_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
