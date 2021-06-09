@@ -24,7 +24,7 @@ public class DetailController {
     }
 
     @PostMapping("delete/{id}")
-    public String delete(@PathVariable("id") Integer id, Employee employee) {
+    public String delete(@PathVariable("id") String id, Employee employee) {
             employee.setEmployee_id(id);
             employeeDao.delete(employee);
             return "redirect:/main";

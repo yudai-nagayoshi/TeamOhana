@@ -11,7 +11,7 @@ import org.seasar.doma.*;
 public class Employee{
 
     @Id
-    private Integer employee_id;
+    private String employee_id;
 
     private String name;
 

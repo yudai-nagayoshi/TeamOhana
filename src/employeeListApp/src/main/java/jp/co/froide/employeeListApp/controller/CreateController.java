@@ -71,7 +71,7 @@ public class CreateController {
             return "redirect:/main";
         }
         catch (DuplicateKeyException e){
-            model.addAttribute("error","登録されている社員番号です");
+            model.addAttribute("error","※登録されている社員番号です。");
             return "create";
         }
     }
