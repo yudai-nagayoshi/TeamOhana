@@ -80,7 +80,7 @@ public class CreateController {
         employee.setJoining_date(form.getJoining_date());
 
         dao.insert(employee);
-        return "redirect:/main";
+        return "redirect:/detail/"+form.getEmployee_id();
 
     }
 }
