@@ -3,6 +3,7 @@ package jp.co.froide.employeeListApp.controller;
 import jp.co.froide.employeeListApp.dao.DepartmentDao;
 import jp.co.froide.employeeListApp.dao.EmployeeDao;
 import jp.co.froide.employeeListApp.dao.PositionDao;
+import jp.co.froide.employeeListApp.entity.All;
 import jp.co.froide.employeeListApp.entity.Department;
 import jp.co.froide.employeeListApp.entity.Employee;
 import jp.co.froide.employeeListApp.entity.Position;
@@ -54,9 +55,17 @@ public class CreateController {
         model.addAttribute("department", dp);
         model.addAttribute("searchMethod", searchMethod);
         model.addAttribute("word", word);
+
         if (br.hasErrors()) {
+            for(All e : dao.selectAll()){
+                if(form.getEmployee_id().equals(""+e.getEmployee_id())){
+                    model.addAttribute("error","※登録されている社員番号です。");
+                    break;
+                }
+            }
             return "create";
         }
+
         Employee employee = new Employee();
         employee.setEmployee_id(form.getEmployee_id());
         employee.setName(form.getName());
@@ -66,13 +75,9 @@ public class CreateController {
         employee.setDepartment_id(form.getDepartment_id());
         employee.setPosition_id(form.getPosition_id());
         employee.setJoining_date(form.getJoining_date());
-        try{
-            dao.insert(employee);
-            return "redirect:/main";
-        }
-        catch (DuplicateKeyException e){
-            model.addAttribute("error","※登録されている社員番号です。");
-            return "create";
-        }
+
+        dao.insert(employee);
+        return "redirect:/main";
+
     }
 }
