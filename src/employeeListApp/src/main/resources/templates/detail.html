@@ -36,7 +36,7 @@
     <script>
 
                     function MoveCheck2() {
-                        ret=confirm( "社員データーを削除してよろしいですか？" );
+                        ret=confirm( "社員データを削除してよろしいですか？" );
                         if(ret){
                             return true;
                         } else {
@@ -47,34 +47,36 @@
 
     <div class="items">
         <div class="left">
-            <h2>個人情報</h2>
+            <h2>社員情報</h2>
             <p class="name" th:text="${list.name}"></p>
             <p class="furigana" th:text="${list.furigana}"></p>
             <div class="phone-number">
-                <p>携帯番号：</p>
+                <p class="word">携帯番号：</p>
                 <p th:text="${list.phone_number}"></p>
             </div>
             <div class="mail">
-                <p>メールアドレス：</p>
-                <p th:text="${list.email}"></p>
+                <p class="word">メールアドレス：</p>
+                <div class="wrap">
+                    <p th:text="${list.email}"></p>
+                </div>
             </div>
         </div>
         <div class="right">
             <h2>業務情報</h2>
             <div class="business">
-                <p>社員番号：</p>
+                <p class="word">社員番号：</p>
                 <p th:text="${list.employee_id}"></p>
             </div>
             <div class="business">
-                <p>役職：</p>
+                <p class="word">役職：</p>
                 <p th:text="${list.position}"></p>
             </div>
             <div class="business">
-                <p>所属部署：</p>
+                <p class="word">所属部署：</p>
                 <p th:text="${list.department}"></p>
             </div>
             <div class="business">
-                <p>入社年月日：</p>
+                <p class="word">入社年月日：</p>
                 <p th:text="${list.joining_date}"></p>
                 <p>([[${list.period}]]年)</p>
             </div>
