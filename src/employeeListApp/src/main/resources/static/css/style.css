@@ -174,7 +174,8 @@ th, td{
 .icons{
     display: flex;
     justify-content: flex-end;
-    margin-right: 20px;
+    margin-right: 50px;
+    margin-top: 20px;
 }
 
 .icons img{
@@ -187,14 +188,22 @@ th, td{
 }
 
 .detail-contents{
-    margin: 50px auto;
+    margin: 70px auto 50px;
     border: solid 3px rgb(245, 172, 62);
     width: 70%;
-    padding: 20px 30px;
+    padding: 20px 0px 40px 50px;
 }
 
 .items{
     display: flex;
+}
+
+.left{
+    width: 50%;
+}
+
+.right{
+    width: 50%;
 }
 
 .date{
@@ -212,7 +221,7 @@ th, td{
 .phone-number{
     display: flex;
     margin-top: 15px;
-    margin-left: 10%;
+    margin-left: 8%;
     font-size: 18px;
 }
 
@@ -224,8 +233,15 @@ th, td{
 .mail{
     display: flex;
     font-size: 18px;
+    margin: 15px 8%;
+}
 
-    margin: 15px 10%;
+.word{
+    white-space: nowrap;
+}
+
+.wrap{
+    word-break: break-all;
 }
 
 .business{
@@ -237,7 +253,7 @@ th, td{
 .detail-btn {
     width: 70px;
     text-align: center;
-    margin : 40px auto;
+    margin : 0px auto;
     padding: 10px;
     background-color: rgb(247, 228, 123);
     border-radius: 10px;
@@ -249,6 +265,16 @@ th, td{
 
 
 /*編集画面 新規登録画面*/
+.edit-items{
+    display: flex;
+    margin: 30px 0px 10px;
+}
+
+.form{
+    margin: 30px 50px 0px;
+    display: flex;
+}
+
 .holder{
     border: solid 2px rgb(206, 204, 204);
     border-radius: 5px;
@@ -264,45 +290,12 @@ th, td{
     width: 180px;
     background: transparent url(https://haniwaman.com/wp/wp-content/uploads/2018/12/form-css-arrow.png) no-repeat center right 8px/10px 10px ;
 }
-.form{
-    display: flex;
-}
-
-.address{
-    margin: 6px 2px;
-}
-
-.left{
-    width: 50%;
-    margin: 0 30px;
-}
-
-.edit-furigana{
-    margin-top: 20px;
-}
 
 .error{
+    padding-left: 50px;
     color: red;
-    font-size: 13px;
-}
-
-.right{
-    width: 50%;
-}
-
-.edit-mail{
-    margin-top: 20px;
-}
-
-.edit-business{
-    margin: 15px 50px;
-    display: flex;
-}
-
-.business-error{
-    margin: 8px 10px;
-    color: red;
-    font-size: 13px;
+    font-size: 12px;
+    list-style: none;
 }
 
 .back,.save {
