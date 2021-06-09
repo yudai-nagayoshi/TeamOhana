@@ -11,7 +11,7 @@ public class EmployeeForm implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @NotBlank(message = "※入力必須項目です。")
-    @Digits(fraction = 0, integer = 10, message = "※10桁以内の半角数字を入力してください。")
+    @Pattern(regexp = "^\\d{1,10}$", message = "※10桁以内の半角数字を入力してください。")
     private String employee_id;
 
     @NotBlank(message = "※入力必須項目です。")
