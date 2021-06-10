@@ -65,10 +65,26 @@ public class UpdateController {
         employee.setDepartment_id(form.getDepartment_id());
         employee.setPosition_id(form.getPosition_id());
         employee.setJoining_date(form.getJoining_date());
-        if(br.hasErrors()){
+
+        boolean over = false;
+        for(All e : dao.selectAll()){
+            if(form.getEmployee_id().equals(e.getEmployee_id())){
+                if(!form.getEmployee_id().equals(id)) {
+                    model.addAttribute("error", "※登録されている社員番号です。");
+                    over = true;
+                    break;
+                }
+            }
+            if(over == true){
+                break;
+            }
+        }
+
+        if(br.hasErrors() || over){
             return "update";
         }
-        if(id != form.getEmployee_id()){
+
+        if(!form.getEmployee_id().equals(id) && over == false){
             dao.updateId(id, form.getEmployee_id());
         }
         dao.update(employee);
