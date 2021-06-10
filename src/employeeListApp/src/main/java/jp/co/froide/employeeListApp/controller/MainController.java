@@ -55,7 +55,7 @@ public class MainController {
             for (All i : listEx) {
                 boolean match = false;
                 for (All j : this.list) {
-                    if (i.getEmployee_id() == j.getEmployee_id()) {
+                    if (i.getEmployee_id().equals(j.getEmployee_id())) {
                         match = true;
                         break;
                     }
