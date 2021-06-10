@@ -56,6 +56,10 @@ public interface EmployeeDao {
     @Update(exclude = {"adding_date","last_update_date"})
     int update(Employee employee);
 
+    @Update(exclude = {"adding_date","last_update_date"})
+    @Sql("UPDATE employees SET employee_id = /*# afterId */ WHERE employees.employee_id = /*# beforeId */")
+    int updateId(String beforeId, String afterId);
+
     @Delete
     int delete(Employee employee);
 }
