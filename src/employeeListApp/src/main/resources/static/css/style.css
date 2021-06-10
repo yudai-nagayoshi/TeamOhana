@@ -137,18 +137,13 @@ th, td{
     padding: 0px 15px 0px 15px;
 }
 
-.fixed {
-    position: sticky;
-    top: 0;
-}
-
-.table-sorter th{
+.tablesorter th{
     position: relative;
     cursor: pointer;
     text-align: left;
 }
 
-.table-sorter th::before, .table-sorter th::after{
+.tablesorter th::before, .tablesorter th::after{
     content: '';
     position: absolute;
     z-index: 2;
@@ -160,39 +155,39 @@ th, td{
     pointer-events: none;
 }
 
-.table-sorter th::before{
+.tablesorter th::before{
     border-bottom-style: solid;
     border-top: none;
     top: 30%;
 }
 
-.table-sorter th::after{
+.tablesorter th::after{
     border-top-style: solid;
     border-bottom: none;
     bottom: 30%;
 }
 
-.table-sorter th.tablesorter-headerAsc:after{
+.tablesorter th.tablesorter-headerAsc:after{
     border: none;
 }
 
-.table-sorter th.tablesorter-headerAsc:before{
+.tablesorter th.tablesorter-headerAsc:before{
     top: 50%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
 }
 
-.table-sorter th.tablesorter-headerDesc:before{
+.tablesorter th.tablesorter-headerDesc:before{
     border: none;
 }
 
-.table-sorter th.tablesorter-headerDesc:after{
+.tablesorter th.tablesorter-headerDesc:after{
     top: 50%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
 }
 
-.table-sorter th.sorter-false:before, .table-sorter th.sorter-false:after{
+.tablesorter th.sorter-false:before, .tablesorter th.sorter-false:after{
     border: none;
 }
 
