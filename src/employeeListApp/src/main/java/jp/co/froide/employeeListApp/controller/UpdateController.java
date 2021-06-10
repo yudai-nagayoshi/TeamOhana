@@ -57,6 +57,7 @@ public class UpdateController {
         model.addAttribute("position",ps);
         model.addAttribute("department",dp);
         Employee employee = dao.selectById(id);
+        employee.setEmployee_id(form.getEmployee_id());
         employee.setName(form.getName());
         employee.setEmail(form.getEmail());
         employee.setFurigana(form.getFurigana());
@@ -64,12 +65,15 @@ public class UpdateController {
         employee.setDepartment_id(form.getDepartment_id());
         employee.setPosition_id(form.getPosition_id());
         employee.setJoining_date(form.getJoining_date());
-        All list = dao.selectDetail(id);
-        model.addAttribute("list",list);
         if(br.hasErrors()){
             return "update";
         }
+        if(id != form.getEmployee_id()){
+            dao.updateId(id, form.getEmployee_id());
+        }
         dao.update(employee);
-        return "redirect:/detail/"+id;
+        All list = dao.selectDetail(employee.getEmployee_id());
+        model.addAttribute("list",list);
+        return "redirect:/detail/"+employee.getEmployee_id();
     }
 }
