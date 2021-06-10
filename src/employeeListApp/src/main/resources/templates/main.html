@@ -15,7 +15,11 @@
             $(document).ready(function() {
                 $('#emp-table').tablesorter({
                     headers: {
+                        0: { sorter:"text"},
                         4: { sorter: false }
+                    },
+                    textSorter:{
+                        0: $.tablesorter.sortText
                     }
                 } );
             });
@@ -33,7 +37,6 @@
             }
         </script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 
         <script>
             jQuery(document).ready(function() {
@@ -68,7 +71,7 @@
                     <form th:action="@{main}">
                         <div class="search" style="margin: 0px 8px">
                             <select name="searchMethod" class="select-box" id="searchMethod">
-                                <option value="name">名前</option>
+                                <option value="name">社員名</option>
                                 <option value="employee_id">社員番号</option>
                                 <option value="position">役職</option>
                                 <option value="department">所属部署</option>
@@ -124,15 +127,15 @@
             </div>
         </header>
 
-        <table border="1" style="border-collapse: collapse" class="t-line table-sorter" id="emp-table">
+        <table border="1" style="border-collapse: collapse" class="t-line tablesorter" id="emp-table">
             <thead>
-            <tr class="t-top" height="40">
-                    <th width="20%" class="fixed">社員番号</th>
-                    <th width="30%" class="fixed">社員名</th>
-                    <th width="25%" class="fixed">役職</th>
-                    <th width="15%" class="fixed">所属部署</th>
-                <th width="10%" class="fixed" style="cursor: default"></th>
-            </tr>
+                <tr class="t-top" height="40">
+                        <th width="20%">社員番号</th>
+                        <th width="30%">社員名</th>
+                        <th width="25%">役職</th>
+                        <th width="15%">所属部署</th>
+                    <th width="10%" style="cursor: default"></th>
+                </tr>
             </thead>
             <tbody>
             <tr height="40" th:each="emp : ${employeeList}">
