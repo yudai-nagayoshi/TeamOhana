@@ -44,28 +44,28 @@
                         <h2>社員情報</h2>
                         <div class="form">
                             <p class="word">社員名：</p>
-                            <input type="text" th:type="text" th:field="*{name}" class="holder">
+                            <input type="text" th:type="text" th:field="*{name}" class="holder" placeholder="山田　太郎">
                         </div>
                         <ul th:each="error:${#fields.errors('name')}" class="error">
                             <li  th:text="${error}" ></li>
                         </ul>
                         <div class="form">
                             <p class="word">フリガナ：</p>
-                            <input type="text" th:type="text" th:field="*{furigana}" class="holder">
+                            <input type="text" th:type="text" th:field="*{furigana}" class="holder" placeholder="ヤマダ　タロウ">
                         </div>
                         <ul th:each="error:${#fields.errors('furigana')}" class="error">
                             <li  th:text="${error}" ></li>
                         </ul>
                         <div class="form">
                             <p class="word">携帯番号(ハイフン無し)：</p>
-                            <input type="text" th:type="text" th:field="*{phone_number}" class="holder">
+                            <input type="text" th:type="text" th:field="*{phone_number}" class="holder" placeholder="09012341234">
                         </div>
                         <ul th:each="error:${#fields.errors('phone_number')}" class="error">
                             <li  th:text="${error}" ></li>
                         </ul>
                         <div class="form">
                             <p class="word">メールアドレス：</p>
-                            <input type="text" th:type="text" th:field="*{email}" class="holder">
+                            <input type="text" th:type="text" th:field="*{email}" class="holder" placeholder="〇〇〇〇@co.jp">
                         </div>
                         <ul th:each="error:${#fields.errors('email')}" class="error">
                             <li  th:text="${error}" ></li>
@@ -75,7 +75,7 @@
                         <h2>業務情報</h2>
                         <div class="form">
                             <p class="word">社員番号：</p>
-                            <input type="text" th:type="text" th:field="*{employee_id}" class="holder">
+                            <input type="text" th:type="text" th:field="*{employee_id}" class="holder" placeholder="1">
                         </div>
                         <ul th:each="error:${#fields.errors('employee_id')}" class="error">
                             <li  th:text="${error}" ></li>
@@ -114,7 +114,7 @@
                 <button class="back" style="margin-right: 80px;" type="submit" th:formaction="@{/main}" formmethod="get">
                     <input type="text" name="searchMethod" th:value="${searchMethod}" style="display: none;">
                     <input type="text" name="word" th:value="${word}" style="display: none;">
-                    <input type="submit" value="戻る" th:formaction="@{/main}" formmethod="get">
+                    <input type="submit" value="社員一覧に戻る" th:formaction="@{/main}" formmethod="get">
                 </button>
             </div>
         </form>
