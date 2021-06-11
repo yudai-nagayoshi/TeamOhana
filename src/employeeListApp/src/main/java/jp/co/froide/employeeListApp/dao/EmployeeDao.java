@@ -24,7 +24,7 @@ public interface EmployeeDao {
             "FROM employees " +
             "INNER JOIN positions ON employees.position_id = positions.position_id " +
             "INNER JOIN departments ON employees.department_id = departments.department_id " +
-            "ORDER BY employee_id ASC")
+            "ORDER BY lpad(employee_id, 10, '0') ASC")
     @Select
     List<All> selectAll();
 
@@ -46,7 +46,7 @@ public interface EmployeeDao {
             "INNER JOIN positions ON employees.position_id = positions.position_id " +
             "INNER JOIN departments ON employees.department_id = departments.department_id " +
             "WHERE /*# item */ LIKE /*'%' + word + '%' */'a'"  +
-            "ORDER BY employee_id ASC")
+            "ORDER BY lpad(employee_id, 10, '0') ASC")
     @Select
     List<All> search(String item, String word);
 
