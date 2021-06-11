@@ -14,6 +14,18 @@
                 select[4].selected = true;
             }
         </script>
+
+        <script>
+            function double(btn){
+            btn.disabled=true;
+            }
+            document.onkeypress = enter;
+            function enter(){
+                if( window.event.keyCode == 13 ){
+                    return false;
+                }
+            }
+        </script>
     </head>
 
     <body>
@@ -97,7 +109,7 @@
             </div>
             <div class="edit-btn">
                 <button class="save">
-                    <input type="submit" value="保存">
+                    <input type="submit" value="保存" onClick="javascript:double(this)"/>
                 </button>
                 <button class="back" style="margin-right: 60px;" type="submit" th:formaction="@{/main}" formmethod="get">
                     <input type="text" name="searchMethod" th:value="${searchMethod}" style="display: none;">

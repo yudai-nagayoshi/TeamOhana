@@ -6,6 +6,18 @@
         <link rel="icon" type="image/png" th:href="@{image/favicon.png}">
         <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
         <link rel="stylesheet" media="all" th:href="@{/css/style.css}"/>
+
+        <script>
+            function double(btn){
+            btn.disabled=true;
+            }
+            document.onkeypress = enter;
+            function enter(){
+                if( window.event.keyCode == 13 ){
+                    return false;
+                }
+            }
+        </script>
     </head>
 
     <body>
@@ -89,7 +101,7 @@
             </div>
             <div class="edit-btn">
                 <button class="save">
-                    <input type="submit" value="保存"/>
+                    <input type="submit" value="保存" onClick="javascript:double(this)"/>
                 </button>
                 <button class="back" style="margin-right: 25px;" type="submit" th:formaction="@{/detail/{id}(id=${id})}" formmethod="get">
                     <input type="submit" value="戻る" th:formaction="@{/detail/{id}(id=${id})}" formmethod="get">
