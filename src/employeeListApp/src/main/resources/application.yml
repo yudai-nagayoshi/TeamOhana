@@ -9,6 +9,8 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 3000
 doma:
   dialect: mysql
   data-source-name: jdbc:mysql://localhost:33306/employee_db?user=root&password=root
