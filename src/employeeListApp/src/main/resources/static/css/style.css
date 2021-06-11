@@ -105,25 +105,35 @@ h2{
 }
 
 .tooltip-text:before {
-	content: '';
-	position: absolute;
-	top: -13px;
-	left: 50%;
-	margin-left: -7px;
-	border: 7px solid transparent;
-	border-bottom: 7px solid #333;
+    content: '';
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    margin-left: -7px;
+    border: 7px solid transparent;
+    border-bottom: 7px solid #333;
 }
 
-.t-line tr:nth-child(even) td{
+#emp-table th{
+    background-color: rgb(255, 207, 77);
+}
+
+tbody tr:hover td {
+    background-color: rgb(255, 241, 177);
+}
+
+tbody tr:hover .detail{
+    color:blue;
+    text-decoration: underline solid blue;
+}
+
+.t-line tr:nth-child(even){
     background-color: #EFEFEF;
 }
-.t-line tr:nth-child(odd) td{
+.t-line tr:nth-child(odd){
     background-color: white;
 }
 
-.t-line tr:first-child, .t-line td:first-child{
-    background-color: rgb(255, 207, 77);
-}
 
 table{
     margin: 50px auto;
@@ -136,6 +146,8 @@ table{
 th, td{
     padding: 0px 15px 0px 15px;
 }
+
+
 
 .tablesorter th{
     position: relative;
