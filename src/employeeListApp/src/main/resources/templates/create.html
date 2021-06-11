@@ -111,7 +111,7 @@
                 <button class="save">
                     <input type="submit" value="保存" onClick="javascript:double(this)"/>
                 </button>
-                <button class="back" style="margin-right: 60px;" type="submit" th:formaction="@{/main}" formmethod="get">
+                <button class="back" style="margin-right: 80px;" type="submit" th:formaction="@{/main}" formmethod="get">
                     <input type="text" name="searchMethod" th:value="${searchMethod}" style="display: none;">
                     <input type="text" name="word" th:value="${word}" style="display: none;">
                     <input type="submit" value="戻る" th:formaction="@{/main}" formmethod="get">
