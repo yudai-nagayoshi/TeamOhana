@@ -7,6 +7,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import jp.co.froide.employeeListApp.dao.EmployeeDao;
 import jp.co.froide.employeeListApp.entity.All;
+import jp.co.froide.employeeListApp.form.EmployeeForm;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class MainController {
     @Autowired
     EmployeeDao employeeDao;
 
+    @Autowired
+    EmployeeForm employeeForm;
+
     List<All> list = new ArrayList<>();
 
     public List<All> employeeList() {
@@ -33,6 +37,7 @@ public class MainController {
 
     @GetMapping("main")
     public String search(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, Model model) {
+        employeeForm.setFlg(true);
         String error = "";
         model.addAttribute("count",list.size());
         if ( employeeDao.selectAll().size() == 0) {

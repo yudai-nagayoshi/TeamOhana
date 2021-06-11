@@ -1,10 +1,11 @@
 package jp.co.froide.employeeListApp.form;
 
 import lombok.Data;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-
+@Configuration
 @Data
 public class EmployeeForm implements Serializable {
 
@@ -39,4 +40,6 @@ public class EmployeeForm implements Serializable {
 
     @Digits(fraction = 0, integer = 1)
     private Integer department_id;
+
+    private boolean flg;
 }

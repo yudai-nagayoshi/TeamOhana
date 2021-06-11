@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <title>error</title>
+</head>
+<body>
+<header>
+    <h1>404 Not Found.</h1>
+</header>
+<div class="detail-contents">
+    <h2>お探しのページは存在しません。</h2>
+</div>
+<div class="detail-btn">
+    <form th:action="@{/main}" method="get">
+        <input type="submit" value="トップ">
+    </form>
+</div>
+</body>
+</html>
