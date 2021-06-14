@@ -303,7 +303,7 @@ th, td{
 }
 
 .detail-btn {
-    width: 70px;
+    width: 130px;
     text-align: center;
     margin : 0px auto;
     padding: 10px;
@@ -313,6 +313,7 @@ th, td{
 
 .detail-btn:hover{
     background-color: rgb(240, 191, 84);
+    cursor: pointer;
 }
 
 
