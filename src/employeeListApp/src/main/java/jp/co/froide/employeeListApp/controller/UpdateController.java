@@ -16,7 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -40,7 +39,7 @@ public class UpdateController {
     List<Position> ps;
 
     @GetMapping("update/{id}")
-    public String update(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word,@PathVariable("id")String id, HttpServletRequest request,Model model){
+    public String update(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word,@PathVariable("id")String id,Model model){
         try {
             box = dao.selectAll();
             dp = d_dao.selectAll();
@@ -51,15 +50,11 @@ public class UpdateController {
             if(employeeForm.isFlg()){
                 model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
                 model.addAttribute("message", "DBサーバーの接続に失敗しました。");
-                model.addAttribute("button", "再接続する");
-                model.addAttribute("method", request.getMethod());
-                System.out.println(request.getRequestURI()+" "+request.getMethod()+" "+searchMethod+" "+word);
-                model.addAttribute("url",request.getRequestURI());
-                model.addAttribute("searchMethod", searchMethod);
-                model.addAttribute("word", word);
-                return "error";
+                model.addAttribute("button", "社員一覧に戻る");
+                model.addAttribute("method", "get");
+                model.addAttribute("url","/main");
+                return "prediction-error";
             }
-            t.getMessage();
         }
         model.addAttribute("position", ps);
         model.addAttribute("department", dp);
@@ -79,7 +74,7 @@ public class UpdateController {
     }
 
     @PostMapping("update/{id}")
-    public String update(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word,@PathVariable("id")String id,@Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br,Model model){
+    public String update(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, @PathVariable("id")String id, @Validated @ModelAttribute("EmployeeForm") EmployeeForm form, BindingResult br,Model model){
         model.addAttribute("position",ps);
         model.addAttribute("department",dp);
         Employee employee = new Employee();
@@ -118,15 +113,15 @@ public class UpdateController {
             model.addAttribute("list", list);
             return "redirect:/detail/" + employee.getEmployee_id();
         }catch (TransientDataAccessResourceException t) {
-            model.addAttribute("message", "更新に失敗しました");
+            model.addAttribute("message", "更新に失敗しました。");
             model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
-            model.addAttribute("button", "再接続する");
+            model.addAttribute("button", "前に戻る");
             model.addAttribute("method", "get");
             model.addAttribute("url", "/update/" + id);
             model.addAttribute("searchMethod", searchMethod);
             model.addAttribute("word", word);
             employeeForm.setFlg(false);
-            return "error";
+            return "prediction-error";
         }
     }
 }

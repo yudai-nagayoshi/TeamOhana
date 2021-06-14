@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
@@ -25,7 +26,7 @@ public class DetailController {
     All list;
 
     @GetMapping("detail/{id}")
-    public String detailList(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, @PathVariable("id") String id, HttpServletRequest request, Model model) {
+    public String detailList(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, @PathVariable("id") String id, Model model) {
         try {
             for (All e : employeeDao.selectAll()) {
                 if (Objects.equals(e.getEmployee_id(), id)) {
@@ -42,13 +43,10 @@ public class DetailController {
             if(employeeForm.isFlg()){
                 model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
                 model.addAttribute("message", "DBサーバーの接続に失敗しました。");
-                model.addAttribute("button", "再接続する");
-                model.addAttribute("method", request.getMethod());
-                model.addAttribute("searchMethod", searchMethod);
-                model.addAttribute("word", word);
-                model.addAttribute("url",request.getRequestURI());
-                System.out.println(request.getContextPath()+"1"+request.getPathInfo()+"2"+request.getPathTranslated()+"3"+request.getQueryString());
-                return "error";
+                model.addAttribute("button", "社員一覧画面に戻る");
+                model.addAttribute("method", "get");
+                model.addAttribute("url","/main");
+                return "prediction-error";
             }
             model.addAttribute("list",list);
             model.addAttribute("searchMethod", searchMethod);
@@ -58,23 +56,23 @@ public class DetailController {
     }
 
     @PostMapping("delete/{id}")
-    public String delete(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word,@PathVariable("id") String id, Employee employee,Model model) {
+    public String delete(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, @PathVariable("id") String id, Employee employee, RedirectAttributes redirectAttributes, Model model) {
         try {
             employee.setEmployee_id(id);
             employeeDao.delete(employee);
-            model.addAttribute("","ok");
-            model.addAttribute("name",list.getName());
+            redirectAttributes.addFlashAttribute("deletedID","ok");
+            redirectAttributes.addFlashAttribute("name",list.getName());
             return "redirect:/main";
         }catch (TransientDataAccessResourceException t){
-            model.addAttribute("message","削除に失敗しました");
+            model.addAttribute("message","削除に失敗しました。");
             model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
-            model.addAttribute("button", "再接続する");
+            model.addAttribute("button", "前に戻る");
             model.addAttribute("method","get");
             model.addAttribute("url","/detail/"+id);
             model.addAttribute("searchMethod", searchMethod);
             model.addAttribute("word", word);
             employeeForm.setFlg(false);
-            return "error";
+            return "prediction-error";
         }
     }
 }
