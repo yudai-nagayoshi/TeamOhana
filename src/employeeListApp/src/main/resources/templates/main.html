@@ -81,9 +81,9 @@
                     </form>
                     <div class="main-icons">
                         <form th:action="@{/create}" method="get" style="padding: 3px 8px 0px 8px">
-                            <input type="text" name="searchMethod" th:value="${searchMethod}" style="display: none;">
-                            <input type="text" name="word" th:value="${word}" style="display: none;">
                             <button class="tooltip">
+                                <input type="text" name="searchMethod" th:value="${searchMethod}" style="display: none;">
+                                <input type="text" name="word" th:value="${word}" style="display: none;">
                                 <img th:src="@{/image/plus_color.png}" width="25" height="25">
                                 <span class="tooltip-text">新規登録</span>
                             </button>

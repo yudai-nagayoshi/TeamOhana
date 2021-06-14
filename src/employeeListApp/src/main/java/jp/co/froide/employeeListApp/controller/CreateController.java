@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -42,7 +41,7 @@ public class CreateController {
     private List<All> box;
 
     @GetMapping("/create")
-    public String create(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word,HttpServletRequest request, Model model){
+    public String create(@RequestParam(name = "searchMethod", required = false) String searchMethod, @RequestParam(name = "word", required = false) String word, Model model){
         try {
             box = dao.selectAll();
             dp = d_Dao.selectAll();
@@ -52,15 +51,11 @@ public class CreateController {
             if(employeeForm.isFlg()){
                 model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
                 model.addAttribute("message", "DBサーバーの接続に失敗しました。");
-                model.addAttribute("button", "再接続する");
-                model.addAttribute("method", request.getMethod());
-                System.out.println(request.getRequestURI()+" "+request.getMethod()+" "+searchMethod+" "+word);
-                model.addAttribute("url",request.getRequestURI());
-                model.addAttribute("searchMethod", searchMethod);
-                model.addAttribute("word", word);
-                return "error";
+                model.addAttribute("button", "社員一覧画面に戻る");
+                model.addAttribute("method", "get");
+                model.addAttribute("url","/main");
+                return "prediction-error";
             }
-            t.getMessage();
         }
         model.addAttribute("position",ps);
         model.addAttribute("department",dp);
@@ -103,19 +98,17 @@ public class CreateController {
         employee.setJoining_date(form.getJoining_date());
         try{
             dao.insert(employee);
-            model.addAttribute("searchMethod", searchMethod);
-            model.addAttribute("word", word);
             return "redirect:/detail/"+form.getEmployee_id();
         }catch (TransientDataAccessResourceException t){
-            model.addAttribute("message","新規登録に失敗しました");
+            model.addAttribute("message","新規登録に失敗しました。");
             model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
-            model.addAttribute("button", "再接続する");
+            model.addAttribute("button", "前に戻る");
             model.addAttribute("method","get");
             model.addAttribute("url","/create");
             model.addAttribute("searchMethod", searchMethod);
             model.addAttribute("word", word);
             employeeForm.setFlg(false);
-            return "error";
+            return "prediction-error";
         }
     }
 }

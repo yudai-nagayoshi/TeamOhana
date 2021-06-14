@@ -4,21 +4,19 @@
     <meta charset="UTF-8">
     <link th:href="@{/css/style.css}" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <title>error</title>
+    <title>社員名簿|エラー</title>
 </head>
 <body>
 <header>
-    <h1 th:text="${status}"></h1>
+  <h1>500 INTERNAL_SERVER_ERROR</h1>
 </header>
 <div class="detail-contents">
-    <h2 th:text="${message}"></h2>
+  <h2>DBサーバーの接続に失敗しました。</h2>
 </div>
 <div class="detail-btn">
-    <form th:object="${EmployeeForm}" th:action="@{${url}}" method="${method}">
-        <input type="text" name="searchMethod" th:value="${searchMethod}" style="display: none;">
-        <input type="text" name="word" th:value="${word}" style="display: none;">
-        <input type="submit" th:value="${button}">
-    </form>
+  <form th:action="@{/main}" method="get">
+    <input type="submit" th:value="社員一覧に戻る">
+  </form>
 </div>
 </body>
 </html>
