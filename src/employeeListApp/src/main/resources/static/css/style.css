@@ -56,10 +56,11 @@ h2{
     padding: 3px 5px;
     height: 1.9em;
     width: 120px;
-    padding-left: 5px;
+    padding-left: 15px;
     margin-right: 10px;
     background: transparent url(https://haniwaman.com/wp/wp-content/uploads/2018/12/form-css-arrow.png) no-repeat center right 8px/10px 10px ;
     background-color: rgb(245, 172, 62);
+    cursor: pointer;
 }
 
 .fas{
