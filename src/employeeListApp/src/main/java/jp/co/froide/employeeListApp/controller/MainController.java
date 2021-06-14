@@ -100,23 +100,23 @@ public class MainController {
 
     @Value
     @AllArgsConstructor
-    @JsonPropertyOrder({"employee_id", "name", "furigana","joining_date", "position", "department", "phone_number", "email"})
+    @JsonPropertyOrder({"社員番号", "社員名", "フリガナ","入社日", "役職", "所属部署", "携帯番号", "メールアドレス"})
     public class EmployeeCsv {
-        @JsonProperty("employee_id")
+        @JsonProperty("社員番号")
         private String id;
-        @JsonProperty("name")
+        @JsonProperty("社員名")
         private String name;
-        @JsonProperty("furigana")
+        @JsonProperty("フリガナ")
         private String furigana;
-        @JsonProperty("joining_date")
+        @JsonProperty("入社日")
         private String joining_date;
-        @JsonProperty("position")
+        @JsonProperty("役職")
         private String position;
-        @JsonProperty("department")
+        @JsonProperty("所属部署")
         private String department;
-        @JsonProperty("phone_number")
+        @JsonProperty("携帯番号")
         private String phone_number;
-        @JsonProperty("email")
+        @JsonProperty("メールアドレス")
         private String email;
     }
 }
