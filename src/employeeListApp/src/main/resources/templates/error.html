@@ -13,10 +13,10 @@
 <div class="detail-contents">
   <h2>DBサーバーの接続に失敗しました。</h2>
 </div>
-<div class="detail-btn">
-  <form th:action="@{/main}" method="get">
-    <input type="submit" th:value="社員一覧に戻る">
-  </form>
-</div>
+<form th:action="@{/main}" method="get" style="text-align:center;">
+    <button class="back">
+        <input type="submit" value="社員一覧に戻る">
+    </button>
+</form>
 </body>
 </html>
