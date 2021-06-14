@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 @Controller
@@ -43,7 +42,7 @@ public class DetailController {
             if(employeeForm.isFlg()){
                 model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
                 model.addAttribute("message", "DBサーバーの接続に失敗しました。");
-                model.addAttribute("button", "社員一覧画面に戻る");
+                model.addAttribute("button", "社員一覧に戻る");
                 model.addAttribute("method", "get");
                 model.addAttribute("url","/main");
                 return "prediction-error";
