@@ -75,8 +75,13 @@
                                 <option value="position">役職</option>
                                 <option value="department">所属部署</option>
                             </select>
+                            <input type='button' value='&#xf002;' class="fas">
+                            <script>
+                            document.write(
+                                "<input type='button' value='&#xf002;' class="fas" onClick='return formSubmit(this);'>");
+                            </script>
                             <input type="text" placeholder="検索" name="word" th:value="${word}">
-                            <input type="submit" value="&#xf002;" class="fas">
+
                         </div>
                     </form>
                     <div class="main-icons">
